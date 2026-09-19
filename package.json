@@ -9,7 +9,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "start:web": "node server/index.mjs",
+    "test:server": "vitest run server worker",
+    "deploy:worker": "wrangler deploy --config worker/wrangler.toml"
   },
   "private": true,
   "dependencies": {
@@ -32,10 +35,12 @@
     "@capacitor/status-bar": "8.0.3",
     "@ionic/angular": "^9.0.0",
     "dexie": "4.4.6",
+    "express": "5.2.1",
     "fast-xml-parser": "5.11.1",
     "ionicons": "^8.1.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "undici": "8.10.2"
   },
   "devDependencies": {
     "@angular/build": "22.1.8",
@@ -46,12 +51,16 @@
     "@capacitor/cli": "8.5.2",
     "@capacitor/ios": "8.5.2",
     "@ionic/angular-toolkit": "^13.0.0",
+    "@types/express": "5.0.6",
+    "@types/supertest": "7.2.1",
     "angular-eslint": "22.0.0",
     "eslint": "^10.10.0",
     "jsdom": "^26.0.0",
+    "supertest": "7.2.2",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.61.0",
-    "vitest": "~4.0.18"
+    "vitest": "~4.0.18",
+    "wrangler": "4.135.0"
   },
   "description": "Modern offline-first Ionic migration of gReader"
 }

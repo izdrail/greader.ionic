@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Capacitor, CapacitorHttp } from '@capacitor/core';
+import { environment } from '../../../environments/environment';
 
 export interface FeedHttpResponse { status: number; body: string; }
 
@@ -11,14 +12,13 @@ export class FeedHttpService {
       const response = await CapacitorHttp.get({ url, headers, responseType: 'text', connectTimeout: 15_000, readTimeout: 30_000 });
       return { status: response.status, body: typeof response.data === 'string' ? response.data : JSON.stringify(response.data) };
     }
-    try {
-      const response = await fetch(url, { headers, redirect: 'follow' });
-      return { status: response.status, body: await response.text() };
-    } catch (error) {
-      if (error instanceof TypeError) {
-        throw new Error('This feed blocks browser requests (CORS). Open gReader as the Android/iOS app, where feeds use native HTTP, or enable CORS on the feed server.');
-      }
-      throw error;
+    const endpoint = new URL(environment.feedProxyUrl, window.location.origin);
+    endpoint.searchParams.set('url', url);
+    const response = await fetch(endpoint, { headers: { Accept: 'application/xml, text/xml, application/json' }, credentials: 'same-origin' });
+    if (!response.ok) {
+      const detail = await response.json().catch(() => ({})) as { error?: string };
+      throw new Error(detail.error || `Feed proxy failed (${response.status})`);
     }
+    return { status: response.status, body: await response.text() };
   }
 }

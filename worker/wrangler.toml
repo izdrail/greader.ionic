@@ -1,0 +1,5 @@
+name = "greader-feed-proxy"
+main = "src.js"
+compatibility_date = "2026-09-19"
+[vars]
+ALLOWED_ORIGIN = "https://replace-with-your-greader-web-origin.example"

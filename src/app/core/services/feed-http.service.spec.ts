@@ -15,10 +15,13 @@ describe('FeedHttpService', () => {
     await expect(new FeedHttpService().get('https://example.test/feed')).resolves.toEqual({ status: 200, body: '<rss/>' });
     expect(mocks.get).toHaveBeenCalledWith(expect.objectContaining({ responseType: 'text' }));
   });
-  it('explains the browser-only CORS restriction', async () => {
+  it('routes browser feeds through the first-party proxy', async () => {
     mocks.native = false;
-    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('Failed to fetch')));
-    await expect(new FeedHttpService().get('https://example.test/feed')).rejects.toThrow('CORS');
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue(new Response('<rss/>', { status: 200 })));
+    await expect(new FeedHttpService().get('https://example.test/feed')).resolves.toEqual({ status: 200, body: '<rss/>' });
+    const [proxyUrl, options] = vi.mocked(fetch).mock.calls[0];
+    expect(String(proxyUrl)).toContain('/api/feed?url=https%3A%2F%2Fexample.test%2Ffeed');
+    expect(options).toEqual(expect.objectContaining({ credentials: 'same-origin' }));
     vi.unstubAllGlobals();
   });
 });
