@@ -1,0 +1,26 @@
+# Feature parity checklist
+
+- [x] Repository/APK inventory and variant diff
+- [x] JADX/apktool mapping
+- [x] Resource extraction and normalized design tokens
+- [x] Domain entities: account, subscription, tag, article, pending mutation
+- [x] Offline-first storage port and browser implementation
+- [x] RSS/Atom parser foundation and enclosure extraction
+- [x] Provider adapter boundaries and safe unconfigured cloud behavior
+- [x] Five themes and responsive phone/tablet shell
+- [ ] Current Feedly OAuth verification and adapter
+- [ ] Current Inoreader authentication/API verification and adapter
+- [ ] Current Old Reader authentication/API verification and adapter
+- [ ] OPML import/export
+- [ ] Full sync conflict behavior after runtime capture
+- [ ] Full-content extraction/cache and offline transition matrix
+- [ ] Article feed/original/simplified modes
+- [ ] Saved filters, sorting, mark-on-scroll, swipe/quick actions
+- [ ] Podcast download/player/chapter behavior
+- [ ] TTS playlist, voices and language detection
+- [ ] Notifications and per-feed policy
+- [ ] Native widgets
+- [ ] Non-secret settings/subscription/tag backup and restore
+- [ ] Premium/product decision (do not blindly recreate old billing)
+- [ ] APK runtime baseline on API 29/API 23
+- [ ] Android/iOS native builds, E2E tests and release documentation

@@ -1,0 +1,1 @@
+import { Provider } from '@angular/core'; import { StoragePort } from './storage.port'; import { IndexedDbStorage } from './indexed-db.storage'; export const STORAGE_PROVIDER:Provider={provide:StoragePort,useExisting:IndexedDbStorage};
