@@ -6,7 +6,10 @@
 - [x] Domain entities: account, subscription, tag, article, pending mutation
 - [x] Offline-first storage port and browser implementation
 - [x] RSS/Atom parser foundation and enclosure extraction
-- [x] Provider adapter boundaries and safe unconfigured cloud behavior
+- [x] Visible provider login/connect chooser and safe unconfigured cloud behavior
+- [x] Local RSS add-feed flow: fetch, parse, persist, list and open article shell
+- [x] OPML import UI and sequential local feed import
+- [x] Browse/starter feed and subscription-management UI
 - [x] Five themes and responsive phone/tablet shell
 - [ ] Current Feedly OAuth verification and adapter
 - [ ] Current Inoreader authentication/API verification and adapter

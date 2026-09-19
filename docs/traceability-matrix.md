@@ -2,9 +2,9 @@
 
 | Feature | APK evidence | Ionic implementation | State |
 |---|---|---|---|
-| Feedly/Inoreader/Old Reader/local | Login activities/layouts | provider adapter ports; local enabled, cloud fails closed | Partial, API research required |
+| Feedly/Inoreader/Old Reader/local | Login activities/layouts | visible provider chooser and provider-specific connect forms; local enabled, cloud fails closed | Partial, API research required |
 | Offline state | subscription/tag/item/history SQLite tables | typed domain + Dexie adapter + mutation queue | Implemented foundation |
-| RSS/Atom/podcast parsing | syndication handlers, Media/iTunes/chapters | `FeedParserService` | RSS/Atom/enclosures foundation |
+| RSS/Atom/podcast parsing | syndication handlers, Media/iTunes/chapters | URL subscription + `FeedParserService` + local persistence | Local RSS end-to-end foundation |
 | Sync/read/star/tag | Sync/Feed services + special provider URIs | `SyncService`, pending mutations | Foundation; conflict runtime gate open |
 | Feed navigation/list/grid/card | Home + ItemList fragments/layouts | responsive split-pane article shell | Foundation |
 | Reading modes | ItemFragment/WebView/feed.html | article route/render shell | Foundation |
