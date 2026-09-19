@@ -2,16 +2,17 @@ import { Injectable } from '@angular/core';
 import { Article, Subscription } from '../domain/models';
 import { FeedParserService } from '../feeds/feed-parser.service';
 import { StoragePort } from '../storage/storage.port';
+import { FeedHttpService } from './feed-http.service';
 
 @Injectable({ providedIn: 'root' })
 export class LocalFeedService {
-  constructor(private parser: FeedParserService, private storage: StoragePort) {}
+  constructor(private parser: FeedParserService, private storage: StoragePort, private http: FeedHttpService) {}
 
   async subscribe(accountId: string, url: string): Promise<Subscription> {
     const normalized = this.normalizeUrl(url);
-    const response = await fetch(normalized, { headers: { Accept: 'application/atom+xml, application/rss+xml, application/xml, text/xml' } });
-    if (!response.ok) throw new Error(`Feed request failed (${response.status})`);
-    return this.importXml(accountId, await response.text(), normalized);
+    const response = await this.http.get(normalized);
+    if (response.status < 200 || response.status >= 300) throw new Error(`Feed request failed (${response.status})`);
+    return this.importXml(accountId, response.body, normalized);
   }
 
   async importXml(accountId: string, xml: string, sourceUrl?: string): Promise<Subscription> {
