@@ -1,0 +1,2838 @@
+{
+  "bundles": {
+    "ca": {
+      "id": "ca",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ca&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ca&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ca&cf=all&num=20",
+          "title": "Canada"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ca&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=ca&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ca&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ca&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=ca&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ca&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Canada English"
+    },
+    "uk_ua": {
+      "id": "uk_ua",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=uk_ua&cf=all&num=20",
+          "title": "Найпопулярніші розпо..."
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=uk_ua&cf=all&num=20",
+          "title": "Світ"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=uk_ua&cf=all&num=20",
+          "title": "Україна"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=uk_ua&cf=all&num=20",
+          "title": "Бізнес"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=uk_ua&cf=all&num=20",
+          "title": "Наука та техніка"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=uk_ua&cf=all&num=20",
+          "title": "Розваги \/ Культура"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=uk_ua&cf=all&num=20",
+          "title": "Спорт"
+        }
+      ],
+      "title": "Україна \/ українська (Ukraine)"
+    },
+    "en_il": {
+      "id": "en_il",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_il&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_il&cf=all&num=20",
+          "title": "Israel"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=en_il&cf=all&num=20",
+          "title": "Middle East"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_il&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_il&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=en_il&cf=all&num=20",
+          "title": "Sci\/Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_il&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_il&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Israel English"
+    },
+    "es_ve": {
+      "id": "es_ve",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_ve&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_ve&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_ve&cf=all&num=20",
+          "title": "Venezuela"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_ve&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_ve&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_ve&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_ve&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_ve&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Venezuela"
+    },
+    "nz": {
+      "id": "nz",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=nz&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=nz&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=nz&cf=all&num=20",
+          "title": "New Zealand"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=nz&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=nz&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=nz&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=nz&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=nz&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=nz&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "New Zealand"
+    },
+    "en_ug": {
+      "id": "en_ug",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_ug&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_ug&cf=all&num=20",
+          "title": "Uganda"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_ug&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_ug&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_ug&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_ug&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_ug&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_ug&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_ug&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_ug&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Uganda"
+    },
+    "en_ie": {
+      "id": "en_ie",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_ie&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_ie&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_ie&cf=all&num=20",
+          "title": "Ireland"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_ie&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_ie&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_ie&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_ie&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_ie&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_ie&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Ireland"
+    },
+    "ru_ru": {
+      "id": "ru_ru",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ru_ru&cf=all&num=20",
+          "title": "Главные новости"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ru_ru&cf=all&num=20",
+          "title": "В мире"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ru_ru&cf=all&num=20",
+          "title": "Россия"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ru_ru&cf=all&num=20",
+          "title": "Бизнес"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ru_ru&cf=all&num=20",
+          "title": "Наука и техника"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ru_ru&cf=all&num=20",
+          "title": "Культура"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ru_ru&cf=all&num=20",
+          "title": "Спорт"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ru_ru&cf=all&num=20",
+          "title": "Здоровье"
+        }
+      ],
+      "title": "Россия (Russia)"
+    },
+    "fr": {
+      "id": "fr",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr&cf=all&num=20",
+          "title": "France"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr&cf=all&num=20",
+          "title": "Santé"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=fr&cf=all&num=20",
+          "title": "Gros plan"
+        }
+      ],
+      "title": "France"
+    },
+    "ru_ua": {
+      "id": "ru_ua",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ru_ua&cf=all&num=20",
+          "title": "Главные новости"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ru_ua&cf=all&num=20",
+          "title": "В мире"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ru_ua&cf=all&num=20",
+          "title": "Украина"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ru_ua&cf=all&num=20",
+          "title": "Бизнес"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ru_ua&cf=all&num=20",
+          "title": "Наука и техника"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ru_ua&cf=all&num=20",
+          "title": "Культура"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ru_ua&cf=all&num=20",
+          "title": "Спорт"
+        }
+      ],
+      "title": "Украина \/ русский (Ukraine)"
+    },
+    "cs_cz": {
+      "id": "cs_cz",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=cs_cz&cf=all&num=20",
+          "title": "Hlavní události"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=cs_cz&cf=all&num=20",
+          "title": "Svět"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=cs_cz&cf=all&num=20",
+          "title": "Domov"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=cs_cz&cf=all&num=20",
+          "title": "Podnikání"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=cs_cz&cf=all&num=20",
+          "title": "Věda\/technika"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=cs_cz&cf=all&num=20",
+          "title": "Kultura a šoubyznys"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=cs_cz&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=l&ned=cs_cz&cf=all&num=20",
+          "title": "Život"
+        }
+      ],
+      "title": "Česká republika"
+    },
+    "en_ph": {
+      "id": "en_ph",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_ph&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_ph&cf=all&num=20",
+          "title": "Philippines"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=se&ned=en_ph&cf=all&num=20",
+          "title": "Southeast Asia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_ph&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_ph&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_ph&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_ph&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_ph&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_ph&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_ph&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Philippines"
+    },
+    "fr_ma": {
+      "id": "fr_ma",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr_ma&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr_ma&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr_ma&cf=all&num=20",
+          "title": "Maroc"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr_ma&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr_ma&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr_ma&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr_ma&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr_ma&cf=all&num=20",
+          "title": "Santé"
+        }
+      ],
+      "title": "Maroc"
+    },
+    "te_in": {
+      "id": "te_in",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=te_in&cf=all&num=20",
+          "title": "ముఖ్య కథనాలు"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ap&ned=te_in&cf=all&num=20",
+          "title": "ఆంధ్రప్రదేశ్"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ieap&ned=te_in&cf=all&num=20",
+          "title": "ఇండియ"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=te_in&cf=all&num=20",
+          "title": "ప్రపంచం"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=te_in&cf=all&num=20",
+          "title": "క్రీడలు"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=te_in&cf=all&num=20",
+          "title": "వినోదం"
+        }
+      ],
+      "title": "తెలుగు (India)"
+    },
+    "es_ar": {
+      "id": "es_ar",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_ar&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_ar&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_ar&cf=all&num=20",
+          "title": "Argentina"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_ar&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_ar&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_ar&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_ar&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_ar&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Argentina"
+    },
+    "en_za": {
+      "id": "en_za",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_za&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_za&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_za&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_za&cf=all&num=20",
+          "title": "South Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_za&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_za&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_za&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_za&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_za&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_za&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "South Africa"
+    },
+    "es_mx": {
+      "id": "es_mx",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_mx&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_mx&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_mx&cf=all&num=20",
+          "title": "México"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_mx&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_mx&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_mx&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_mx&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_mx&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "México"
+    },
+    "es_us": {
+      "id": "es_us",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_us&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_us&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_us&cf=all&num=20",
+          "title": "Estados Unidos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_us&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_us&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_us&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_us&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_us&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Estados Unidos"
+    },
+    "ar_ae": {
+      "id": "ar_ae",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ar_ae&cf=all&num=20",
+          "title": "أهم الأخبار"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ar_ae&cf=all&num=20",
+          "title": "أخبار محلية"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=ar_ae&cf=all&num=20",
+          "title": "العالم العربي"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ar_ae&cf=all&num=20",
+          "title": "العالم"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ar_ae&cf=all&num=20",
+          "title": "أعمال"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ar_ae&cf=all&num=20",
+          "title": "علوم\/تكنولوجيا"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ar_ae&cf=all&num=20",
+          "title": "ترفيه"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ar_ae&cf=all&num=20",
+          "title": "رياضة"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ar_ae&cf=all&num=20",
+          "title": "صحة"
+        }
+      ],
+      "title": "الإمارات (UAE)"
+    },
+    "kr": {
+      "id": "kr",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=kr&cf=all&num=20",
+          "title": "주요 뉴스"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=p&ned=kr&cf=all&num=20",
+          "title": "정치"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=kr&cf=all&num=20",
+          "title": "경제"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=y&ned=kr&cf=all&num=20",
+          "title": "사회"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=l&ned=kr&cf=all&num=20",
+          "title": "문화\/생활"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=kr&cf=all&num=20",
+          "title": "국제"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=kr&cf=all&num=20",
+          "title": "과학기술"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=kr&cf=all&num=20",
+          "title": "연예"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=kr&cf=all&num=20",
+          "title": "스포츠"
+        }
+      ],
+      "title": "한국 (Korea)"
+    },
+    "de_ch": {
+      "id": "de_ch",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=de_ch&cf=all&num=20",
+          "title": "Schlagzeilen"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=de_ch&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=de_ch&cf=all&num=20",
+          "title": "Schweiz"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=de_ch&cf=all&num=20",
+          "title": "Wirtschaft"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=de_ch&cf=all&num=20",
+          "title": "Wissen\/Technik"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=de_ch&cf=all&num=20",
+          "title": "Unterhaltung"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=de_ch&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=de_ch&cf=all&num=20",
+          "title": "Gesundheit"
+        }
+      ],
+      "title": "Schweiz"
+    },
+    "pt-PT_pt": {
+      "id": "pt-PT_pt",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Notícias principais"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Mundo"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Portugal"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Negócios"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Ciência"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Entretenimento"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Desporto"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=pt-PT_pt&cf=all&num=20",
+          "title": "Saúde"
+        }
+      ],
+      "title": "Portugal"
+    },
+    "sv_se": {
+      "id": "sv_se",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=sv_se&cf=all&num=20",
+          "title": "Huvudnyheter"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=sv_se&cf=all&num=20",
+          "title": "Världen"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=sv_se&cf=all&num=20",
+          "title": "Sverige"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=sv_se&cf=all&num=20",
+          "title": "Ekonomi"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=sv_se&cf=all&num=20",
+          "title": "Vetenskap &amp; teknik"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=sv_se&cf=all&num=20",
+          "title": "Nöje"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=sv_se&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=sv_se&cf=all&num=20",
+          "title": "Hälsa"
+        }
+      ],
+      "title": "Sverige"
+    },
+    "pl_pl": {
+      "id": "pl_pl",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=pl_pl&cf=all&num=20",
+          "title": "Najważniejsze artykuły"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=pl_pl&cf=all&num=20",
+          "title": "Ze świata"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=pl_pl&cf=all&num=20",
+          "title": "Polska"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=pl_pl&cf=all&num=20",
+          "title": "Gospodarka"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=pl_pl&cf=all&num=20",
+          "title": "Nauka\/technika"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=pl_pl&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=pl_pl&cf=all&num=20",
+          "title": "Rozrywka"
+        }
+      ],
+      "title": "Polska"
+    },
+    "ar_eg": {
+      "id": "ar_eg",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ar_eg&cf=all&num=20",
+          "title": "أهم الأخبار"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ar_eg&cf=all&num=20",
+          "title": "أخبار محلية"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=ar_eg&cf=all&num=20",
+          "title": "العالم العربي"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ar_eg&cf=all&num=20",
+          "title": "العالم"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ar_eg&cf=all&num=20",
+          "title": "أعمال"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ar_eg&cf=all&num=20",
+          "title": "علوم\/تكنولوجيا"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ar_eg&cf=all&num=20",
+          "title": "ترفيه"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ar_eg&cf=all&num=20",
+          "title": "رياضة"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ar_eg&cf=all&num=20",
+          "title": "صحة"
+        }
+      ],
+      "title": "مصر (Egypt)"
+    },
+    "cn": {
+      "id": "cn",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=cn&cf=all&num=20",
+          "title": "焦点报道"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=cn&cf=all&num=20",
+          "title": "国际\/港台"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=cn&cf=all&num=20",
+          "title": "内地"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=cn&cf=all&num=20",
+          "title": "财经"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=cn&cf=all&num=20",
+          "title": "娱乐"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=cn&cf=all&num=20",
+          "title": "科技"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=cn&cf=all&num=20",
+          "title": "体育"
+        }
+      ],
+      "title": "中国版 (China)"
+    },
+    "ar_sa": {
+      "id": "ar_sa",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ar_sa&cf=all&num=20",
+          "title": "أهم الأخبار"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ar_sa&cf=all&num=20",
+          "title": "أخبار محلية"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=ar_sa&cf=all&num=20",
+          "title": "العالم العربي"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ar_sa&cf=all&num=20",
+          "title": "العالم"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ar_sa&cf=all&num=20",
+          "title": "أعمال"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ar_sa&cf=all&num=20",
+          "title": "علوم\/تكنولوجيا"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ar_sa&cf=all&num=20",
+          "title": "ترفيه"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ar_sa&cf=all&num=20",
+          "title": "رياضة"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ar_sa&cf=all&num=20",
+          "title": "صحة"
+        }
+      ],
+      "title": "السعودية (KSA)"
+    },
+    "en_bw": {
+      "id": "en_bw",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_bw&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_bw&cf=all&num=20",
+          "title": "Botswana"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_bw&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_bw&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_bw&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=en_bw&cf=all&num=20",
+          "title": "Sci\/Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_bw&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_bw&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_bw&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Botswana"
+    },
+    "no_no": {
+      "id": "no_no",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=no_no&cf=all&num=20",
+          "title": "Hovedoppslag"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=no_no&cf=all&num=20",
+          "title": "Utenriks"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=no_no&cf=all&num=20",
+          "title": "Innenriks"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=no_no&cf=all&num=20",
+          "title": "Næringsliv"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=no_no&cf=all&num=20",
+          "title": "Vitenskap\/teknologi"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=no_no&cf=all&num=20",
+          "title": "Underholdning"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=no_no&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=no_no&cf=all&num=20",
+          "title": "Helse"
+        }
+      ],
+      "title": "Norge"
+    },
+    "iw_il": {
+      "id": "iw_il",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=iw_il&cf=all&num=20",
+          "title": "סיפורים מובילים"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=iw_il&cf=all&num=20",
+          "title": "ישראל"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=iw_il&cf=all&num=20",
+          "title": "עולם"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=iw_il&cf=all&num=20",
+          "title": "עסקים"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=iw_il&cf=all&num=20",
+          "title": "מדע\/טכנולוגיה"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=iw_il&cf=all&num=20",
+          "title": "תרבות ובידור"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=iw_il&cf=all&num=20",
+          "title": "ספורט"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=iw_il&cf=all&num=20",
+          "title": "בריאות"
+        }
+      ],
+      "title": "ישראל (Israel)"
+    },
+    "en_tz": {
+      "id": "en_tz",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_tz&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_tz&cf=all&num=20",
+          "title": "Tanzania"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_tz&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_tz&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_tz&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_tz&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_tz&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_tz&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_tz&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_tz&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Tanzania"
+    },
+    "en_pk": {
+      "id": "en_pk",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_pk&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_pk&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_pk&cf=all&num=20",
+          "title": "Pakistan"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_pk&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_pk&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_pk&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_pk&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_pk&cf=all&num=20",
+          "title": "Health"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_pk&cf=all&num=20",
+          "title": "Science"
+        }
+      ],
+      "title": "Pakistan"
+    },
+    "es_pe": {
+      "id": "es_pe",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_pe&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_pe&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_pe&cf=all&num=20",
+          "title": "Perú"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_pe&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_pe&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_pe&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_pe&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_pe&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Perú"
+    },
+    "en_ke": {
+      "id": "en_ke",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_ke&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_ke&cf=all&num=20",
+          "title": "Kenya"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_ke&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_ke&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_ke&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=en_ke&cf=all&num=20",
+          "title": "Sci\/Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_ke&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_ke&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_ke&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Kenya"
+    },
+    "fr_be": {
+      "id": "fr_be",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr_be&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr_be&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr_be&cf=all&num=20",
+          "title": "Belgique"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr_be&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr_be&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr_be&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr_be&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr_be&cf=all&num=20",
+          "title": "Santé"
+        }
+      ],
+      "title": "Belgique"
+    },
+    "nl_nl": {
+      "id": "nl_nl",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=nl_nl&cf=all&num=20",
+          "title": "Voorpaginanieuws"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=nl_nl&cf=all&num=20",
+          "title": "Buitenland"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=nl_nl&cf=all&num=20",
+          "title": "Nederland"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=nl_nl&cf=all&num=20",
+          "title": "Zakelijk"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=nl_nl&cf=all&num=20",
+          "title": "Wetenschap\/techniek"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=nl_nl&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=nl_nl&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=nl_nl&cf=all&num=20",
+          "title": "Gezondheid"
+        }
+      ],
+      "title": "Nederland"
+    },
+    "en_zw": {
+      "id": "en_zw",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_zw&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_zw&cf=all&num=20",
+          "title": "Zimbabwe"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_zw&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_zw&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_zw&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_zw&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_zw&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_zw&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_zw&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_zw&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Zimbabwe"
+    },
+    "hk": {
+      "id": "hk",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=hk&cf=all&num=20",
+          "title": "焦點新聞"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=hk&cf=all&num=20",
+          "title": "國際"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=hk&cf=all&num=20",
+          "title": "香港"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=c&ned=hk&cf=all&num=20",
+          "title": "兩岸"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=hk&cf=all&num=20",
+          "title": "財經"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=hk&cf=all&num=20",
+          "title": "體育"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=hk&cf=all&num=20",
+          "title": "娛樂"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=hk&cf=all&num=20",
+          "title": "科技"
+        }
+      ],
+      "title": "香港版 (Hong Kong)"
+    },
+    "en_sg": {
+      "id": "en_sg",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_sg&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_sg&cf=all&num=20",
+          "title": "Singapore"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=se&ned=en_sg&cf=all&num=20",
+          "title": "Southeast Asia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_sg&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_sg&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_sg&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_sg&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_sg&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_sg&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_sg&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Singapore"
+    },
+    "en_gh": {
+      "id": "en_gh",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_gh&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_gh&cf=all&num=20",
+          "title": "Ghana"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_gh&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_gh&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_gh&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=en_gh&cf=all&num=20",
+          "title": "Sci\/Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_gh&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_gh&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_gh&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Ghana"
+    },
+    "de": {
+      "id": "de",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=de&cf=all&num=20",
+          "title": "Schlagzeilen"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=de&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=de&cf=all&num=20",
+          "title": "Deutschland"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=de&cf=all&num=20",
+          "title": "Wirtschaft"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=de&cf=all&num=20",
+          "title": "Wissen\/Technik"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=de&cf=all&num=20",
+          "title": "Unterhaltung"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=de&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=de&cf=all&num=20",
+          "title": "Gesundheit"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=de&cf=all&num=20",
+          "title": "Panorama"
+        }
+      ],
+      "title": "Deutschland"
+    },
+    "es_cl": {
+      "id": "es_cl",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_cl&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_cl&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_cl&cf=all&num=20",
+          "title": "Chile"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_cl&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_cl&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_cl&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_cl&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_cl&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Chile"
+    },
+    "es_co": {
+      "id": "es_co",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_co&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_co&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_co&cf=all&num=20",
+          "title": "Colombia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_co&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_co&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_co&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_co&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_co&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Colombia"
+    },
+    "ml_in": {
+      "id": "ml_in",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ml_in&cf=all&num=20",
+          "title": "പ്രധാന വാര്‍ത്തകള്‍"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=kl&ned=ml_in&cf=all&num=20",
+          "title": "കേരളം"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=iekl&ned=ml_in&cf=all&num=20",
+          "title": "രാഷ്‌ട്രം"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ml_in&cf=all&num=20",
+          "title": "ബിസിനസ്"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ml_in&cf=all&num=20",
+          "title": "സ്പോര്‍ട്സ്"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ml_in&cf=all&num=20",
+          "title": "സാംസ്കാരികം"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ml_in&cf=all&num=20",
+          "title": "ലോകം"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=ml_in&cf=all&num=20",
+          "title": "അറബിനാടുകള്‍"
+        }
+      ],
+      "title": "മലയാളം (India)"
+    },
+    "el_gr": {
+      "id": "el_gr",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=el_gr&cf=all&num=20",
+          "title": "Κυριότερες ειδήσεις"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=el_gr&cf=all&num=20",
+          "title": "Κόσμος"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=el_gr&cf=all&num=20",
+          "title": "Ελλάδα"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=el_gr&cf=all&num=20",
+          "title": "Επιχειρήσεις"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=el_gr&cf=all&num=20",
+          "title": "Ψυχαγωγία"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=el_gr&cf=all&num=20",
+          "title": "Αθλητικά"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=el_gr&cf=all&num=20",
+          "title": "Επιστήμη και τεχνολογία"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=p&ned=el_gr&cf=all&num=20",
+          "title": "Πολιτική"
+        }
+      ],
+      "title": "Ελλάδα (Greece)"
+    },
+    "ar_me": {
+      "id": "ar_me",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ar_me&cf=all&num=20",
+          "title": "أهم الأخبار"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ar_me&cf=all&num=20",
+          "title": "العالم"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ar_me&cf=all&num=20",
+          "title": "العالم العربي"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ar_me&cf=all&num=20",
+          "title": "أعمال"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ar_me&cf=all&num=20",
+          "title": "علوم\/تكنولوجيا"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ar_me&cf=all&num=20",
+          "title": "ترفيه"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ar_me&cf=all&num=20",
+          "title": "رياضة"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ar_me&cf=all&num=20",
+          "title": "صحة"
+        }
+      ],
+      "title": "العالم العربي (Arabic)"
+    },
+    "fr_sn": {
+      "id": "fr_sn",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr_sn&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr_sn&cf=all&num=20",
+          "title": "Senegal"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=fr_sn&cf=all&num=20",
+          "title": "Afrique"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr_sn&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr_sn&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr_sn&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr_sn&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr_sn&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr_sn&cf=all&num=20",
+          "title": "Santé"
+        }
+      ],
+      "title": "Sénégal"
+    },
+    "sr_rs": {
+      "id": "sr_rs",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=sr_rs&cf=all&num=20",
+          "title": "Најважније вести"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=sr_rs&cf=all&num=20",
+          "title": "Свет"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=sr_rs&cf=all&num=20",
+          "title": "Србија"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=sr_rs&cf=all&num=20",
+          "title": "Спорт"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=sr_rs&cf=all&num=20",
+          "title": "Пословне вести"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=sr_rs&cf=all&num=20",
+          "title": "Наука\/техника"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=sr_rs&cf=all&num=20",
+          "title": "Забава"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=sr_rs&cf=all&num=20",
+          "title": "Здравље"
+        }
+      ],
+      "title": "Србија (Serbia)"
+    },
+    "tr_tr": {
+      "id": "tr_tr",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=tr_tr&cf=all&num=20",
+          "title": "En Çok Okunan Haberler"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=tr_tr&cf=all&num=20",
+          "title": "Dünya"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=tr_tr&cf=all&num=20",
+          "title": "Türkiye"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=tr_tr&cf=all&num=20",
+          "title": "Ekonomi"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=tr_tr&cf=all&num=20",
+          "title": "Bilim\/Teknoloji"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=tr_tr&cf=all&num=20",
+          "title": "Eğlence"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=tr_tr&cf=all&num=20",
+          "title": "Spor"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=tr_tr&cf=all&num=20",
+          "title": "Sağlık"
+        }
+      ],
+      "title": "Türkiye"
+    },
+    "fr_ca": {
+      "id": "fr_ca",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr_ca&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr_ca&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr_ca&cf=all&num=20",
+          "title": "Canada"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr_ca&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr_ca&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr_ca&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr_ca&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr_ca&cf=all&num=20",
+          "title": "Santé"
+        }
+      ],
+      "title": "Canada Français"
+    },
+    "uk": {
+      "id": "uk",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=uk&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=uk&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=uk&cf=all&num=20",
+          "title": "U.K."
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=uk&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=uk&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=uk&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=uk&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=uk&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=uk&cf=all&num=20",
+          "title": "Health"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=uk&cf=all&num=20",
+          "title": "Spotlight"
+        }
+      ],
+      "title": "U.K."
+    },
+    "en_na": {
+      "id": "en_na",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_na&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_na&cf=all&num=20",
+          "title": "Namibia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_na&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_na&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_na&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_na&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_na&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_na&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_na&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_na&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Namibia"
+    },
+    "it": {
+      "id": "it",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=it&cf=all&num=20",
+          "title": "Prima pagina"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=it&cf=all&num=20",
+          "title": "Esteri"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=it&cf=all&num=20",
+          "title": "Italia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=it&cf=all&num=20",
+          "title": "Economia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=it&cf=all&num=20",
+          "title": "Scienza e tecnologia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=it&cf=all&num=20",
+          "title": "Spettacoli"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=it&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=it&cf=all&num=20",
+          "title": "Salute"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=it&cf=all&num=20",
+          "title": "In evidenza"
+        }
+      ],
+      "title": "Italia"
+    },
+    "hi_in": {
+      "id": "hi_in",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=hi_in&cf=all&num=20",
+          "title": "सुर्खियां"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=hi_in&cf=all&num=20",
+          "title": "विश्व"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=hi_in&cf=all&num=20",
+          "title": "भारत"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=hi_in&cf=all&num=20",
+          "title": "व्यवसाय"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=hi_in&cf=all&num=20",
+          "title": "मनोरंजन"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=hi_in&cf=all&num=20",
+          "title": "खेलकूद"
+        }
+      ],
+      "title": "हिन्दी (India)"
+    },
+    "hu_hu": {
+      "id": "hu_hu",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=hu_hu&cf=all&num=20",
+          "title": "Vezető hírek"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=hu_hu&cf=all&num=20",
+          "title": "Nemzetközi"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=hu_hu&cf=all&num=20",
+          "title": "Magyarország"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=hu_hu&cf=all&num=20",
+          "title": "Üzleti élet"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=hu_hu&cf=all&num=20",
+          "title": "Tudomány\/technológia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=hu_hu&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=hu_hu&cf=all&num=20",
+          "title": "Kultúra\/szórakozás"
+        }
+      ],
+      "title": "Magyarország"
+    },
+    "en_ng": {
+      "id": "en_ng",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_ng&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_ng&cf=all&num=20",
+          "title": "Nigeria"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_ng&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_ng&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_ng&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_ng&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_ng&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_ng&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_ng&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_ng&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Nigeria"
+    },
+    "nl_be": {
+      "id": "nl_be",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=nl_be&cf=all&num=20",
+          "title": "Voorpaginanieuws"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=nl_be&cf=all&num=20",
+          "title": "Buitenland"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=nl_be&cf=all&num=20",
+          "title": "België"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=nl_be&cf=all&num=20",
+          "title": "Zakelijk"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=nl_be&cf=all&num=20",
+          "title": "Wetenschap\/techniek"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=nl_be&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=nl_be&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=nl_be&cf=all&num=20",
+          "title": "Gezondheid"
+        }
+      ],
+      "title": "België"
+    },
+    "fr_ch": {
+      "id": "fr_ch",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=fr_ch&cf=all&num=20",
+          "title": "À la une"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=fr_ch&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=fr_ch&cf=all&num=20",
+          "title": "Suisse"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=fr_ch&cf=all&num=20",
+          "title": "Économie"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=fr_ch&cf=all&num=20",
+          "title": "Science\/High-Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=fr_ch&cf=all&num=20",
+          "title": "Divertissement"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=fr_ch&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=fr_ch&cf=all&num=20",
+          "title": "Santé"
+        }
+      ],
+      "title": "Suisse"
+    },
+    "en_my": {
+      "id": "en_my",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_my&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_my&cf=all&num=20",
+          "title": "Malaysia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=se&ned=en_my&cf=all&num=20",
+          "title": "Southeast Asia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_my&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_my&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=en_my&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_my&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_my&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=en_my&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_my&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Malaysia"
+    },
+    "es_cu": {
+      "id": "es_cu",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es_cu&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es_cu&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es_cu&cf=all&num=20",
+          "title": "Cuba"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es_cu&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es_cu&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es_cu&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es_cu&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es_cu&cf=all&num=20",
+          "title": "Salud"
+        }
+      ],
+      "title": "Cuba"
+    },
+    "us": {
+      "id": "us",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=us&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=us&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=us&cf=all&num=20",
+          "title": "U.S."
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=us&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=us&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=us&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=us&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=us&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=us&cf=all&num=20",
+          "title": "Health"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=us&cf=all&num=20",
+          "title": "Spotlight"
+        }
+      ],
+      "title": "U.S."
+    },
+    "in": {
+      "id": "in",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=in&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=in&cf=all&num=20",
+          "title": "India"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=in&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=in&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=in&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=in&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=in&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=in&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=in&cf=all&num=20",
+          "title": "Health"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=in&cf=all&num=20",
+          "title": "Spotlight"
+        }
+      ],
+      "title": "India"
+    },
+    "pt-BR_br": {
+      "id": "pt-BR_br",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=pt-BR_br&cf=all&num=20",
+          "title": "Últimas notícias"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=pt-BR_br&cf=all&num=20",
+          "title": "Mundo"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=pt-BR_br&cf=all&num=20",
+          "title": "Brasil"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=pt-BR_br&cf=all&num=20",
+          "title": "Negócios"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=pt-BR_br&cf=all&num=20",
+          "title": "Ciência\/Tecnologia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=pt-BR_br&cf=all&num=20",
+          "title": "Entretenimento"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=pt-BR_br&cf=all&num=20",
+          "title": "Esportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=pt-BR_br&cf=all&num=20",
+          "title": "Saúde"
+        }
+      ],
+      "title": "Brasil"
+    },
+    "au": {
+      "id": "au",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=au&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=au&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=au&cf=all&num=20",
+          "title": "Australia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=au&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tc&ned=au&cf=all&num=20",
+          "title": "Technology"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=au&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=au&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=snc&ned=au&cf=all&num=20",
+          "title": "Science"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=au&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Australia"
+    },
+    "vi_vn": {
+      "id": "vi_vn",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=vi_vn&cf=all&num=20",
+          "title": "Tin bài hàng đầu"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=vi_vn&cf=all&num=20",
+          "title": "Thế giới"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=vi_vn&cf=all&num=20",
+          "title": "Việt Nam"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=vi_vn&cf=all&num=20",
+          "title": "Kinh doanh"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=vi_vn&cf=all&num=20",
+          "title": "Giải trí"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=vi_vn&cf=all&num=20",
+          "title": "Thể thao"
+        }
+      ],
+      "title": "Việt Nam (Vietnam)"
+    },
+    "tw": {
+      "id": "tw",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=tw&cf=all&num=20",
+          "title": "焦點新聞"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=tw&cf=all&num=20",
+          "title": "國際"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=tw&cf=all&num=20",
+          "title": "台灣"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=tw&cf=all&num=20",
+          "title": "財經"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=tw&cf=all&num=20",
+          "title": "科技"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=tw&cf=all&num=20",
+          "title": "體育"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=tw&cf=all&num=20",
+          "title": "娛樂"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=c&ned=tw&cf=all&num=20",
+          "title": "兩岸"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=y&ned=tw&cf=all&num=20",
+          "title": "社會"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=tw&cf=all&num=20",
+          "title": "健康"
+        }
+      ],
+      "title": "台灣版 (Taiwan)"
+    },
+    "ta_in": {
+      "id": "ta_in",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ta_in&cf=all&num=20",
+          "title": "முக்கிய செய்திகள்"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=tn&ned=ta_in&cf=all&num=20",
+          "title": "தமிழகம்"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ietn&ned=ta_in&cf=all&num=20",
+          "title": "இந்தியா"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=sn&ned=ta_in&cf=all&num=20",
+          "title": "இலங்கை"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ta_in&cf=all&num=20",
+          "title": "உலகம்"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ta_in&cf=all&num=20",
+          "title": "வணிகம்"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ta_in&cf=all&num=20",
+          "title": "பொழுதுபோக்கு"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ta_in&cf=all&num=20",
+          "title": "விளையாட்டு"
+        }
+      ],
+      "title": "தமிழ்(India)"
+    },
+    "ar_lb": {
+      "id": "ar_lb",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=ar_lb&cf=all&num=20",
+          "title": "أهم الأخبار"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=ar_lb&cf=all&num=20",
+          "title": "أخبار محلية"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=awkl&ned=ar_lb&cf=all&num=20",
+          "title": "العالم العربي"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=ar_lb&cf=all&num=20",
+          "title": "العالم"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=ar_lb&cf=all&num=20",
+          "title": "أعمال"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=ar_lb&cf=all&num=20",
+          "title": "علوم\/تكنولوجيا"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=ar_lb&cf=all&num=20",
+          "title": "ترفيه"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=ar_lb&cf=all&num=20",
+          "title": "رياضة"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=ar_lb&cf=all&num=20",
+          "title": "صحة"
+        }
+      ],
+      "title": "لبنان (Lebanon)"
+    },
+    "de_at": {
+      "id": "de_at",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=de_at&cf=all&num=20",
+          "title": "Schlagzeilen"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=de_at&cf=all&num=20",
+          "title": "International"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=de_at&cf=all&num=20",
+          "title": "Österreich"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=de_at&cf=all&num=20",
+          "title": "Wirtschaft"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=de_at&cf=all&num=20",
+          "title": "Wissen\/Technik"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=de_at&cf=all&num=20",
+          "title": "Unterhaltung"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=de_at&cf=all&num=20",
+          "title": "Sport"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=de_at&cf=all&num=20",
+          "title": "Gesundheit"
+        }
+      ],
+      "title": "Österreich"
+    },
+    "en_et": {
+      "id": "en_et",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=en_et&cf=all&num=20",
+          "title": "Top Stories"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=en_et&cf=all&num=20",
+          "title": "Ethiopia"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=af&ned=en_et&cf=all&num=20",
+          "title": "Africa"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=en_et&cf=all&num=20",
+          "title": "World"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=en_et&cf=all&num=20",
+          "title": "Business"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=en_et&cf=all&num=20",
+          "title": "Sci\/Tech"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=en_et&cf=all&num=20",
+          "title": "Entertainment"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=en_et&cf=all&num=20",
+          "title": "Sports"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=en_et&cf=all&num=20",
+          "title": "Health"
+        }
+      ],
+      "title": "Ethiopia"
+    },
+    "es": {
+      "id": "es",
+      "subscriptions": [
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=h&ned=es&cf=all&num=20",
+          "title": "Noticias destacadas"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=w&ned=es&cf=all&num=20",
+          "title": "Internacional"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=n&ned=es&cf=all&num=20",
+          "title": "España"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=b&ned=es&cf=all&num=20",
+          "title": "Economía"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=t&ned=es&cf=all&num=20",
+          "title": "Ciencia y Tecnología"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=e&ned=es&cf=all&num=20",
+          "title": "Espectáculos"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=s&ned=es&cf=all&num=20",
+          "title": "Deportes"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=m&ned=es&cf=all&num=20",
+          "title": "Salud"
+        },
+        {
+          "id": "feed\/https:\/\/www.google.com\/news?output=rss&topic=ir&ned=es&cf=all&num=20",
+          "title": "De interés"
+        }
+      ],
+      "title": "España"
+    }
+  }
+}

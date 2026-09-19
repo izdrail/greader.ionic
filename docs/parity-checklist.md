@@ -9,7 +9,10 @@
 - [x] Visible provider login/connect chooser and safe unconfigured cloud behavior
 - [x] Local RSS add-feed flow: fetch, parse, persist, list and open article shell
 - [x] OPML import UI and sequential local feed import
-- [x] Browse/starter feed and subscription-management UI
+- [x] Full APK Browse directory (hundreds of categories and original feed links)
+- [x] Full APK News country directory and every bundled news link
+- [x] Podcast discovery/search/artwork/add flow using the baseline iTunes contract
+- [x] Subscription-management UI
 - [x] Five themes and responsive phone/tablet shell
 - [ ] Current Feedly OAuth verification and adapter
 - [ ] Current Inoreader authentication/API verification and adapter

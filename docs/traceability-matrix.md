@@ -15,3 +15,6 @@
 | Backup/restore | settings `.pref` serializer | documented non-secret settings export contract | Planned |
 
 Runtime comparison against 5.2.0/API 29 and 4.3.1 Pro/API 23 was deferred by owner decision. Static evidence is not labeled observed behavior.
+
+| Browse/news directory | APK bundled directories | Full category/feed views | Implemented |
+| Podcast discovery | APK iTunes search | Search/list/add views | Implemented |
