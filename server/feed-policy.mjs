@@ -6,6 +6,10 @@ export const FETCH_TIMEOUT_MS = 15_000;
 export const MAX_REDIRECTS = 3;
 export const ALLOWED_PORTS = new Set(['', '80', '443']);
 
+export class FeedPolicyError extends Error {
+  constructor(message) { super(message); this.name = 'FeedPolicyError'; this.code = 'blocked_target'; }
+}
+
 function ipv4Private(ip) {
   const n = ip.split('.').map(Number);
   return n[0] === 0 || n[0] === 10 || n[0] === 127 || n[0] >= 224 ||
@@ -25,19 +29,19 @@ export function isPrivateAddress(ip) {
 
 export function parsePublicHttpUrl(raw) {
   let url;
-  try { url = new URL(raw); } catch { throw new Error('Invalid feed URL'); }
-  if (!['http:', 'https:'].includes(url.protocol)) throw new Error('Only HTTP(S) feed URLs are allowed');
-  if (url.username || url.password) throw new Error('Feed URLs cannot contain credentials');
-  if (!ALLOWED_PORTS.has(url.port)) throw new Error('Only ports 80 and 443 are allowed');
+  try { url = new URL(raw); } catch { throw new FeedPolicyError('Invalid feed URL'); }
+  if (!['http:', 'https:'].includes(url.protocol)) throw new FeedPolicyError('Only HTTP(S) feed URLs are allowed');
+  if (url.username || url.password) throw new FeedPolicyError('Feed URLs cannot contain credentials');
+  if (!ALLOWED_PORTS.has(url.port)) throw new FeedPolicyError('Only ports 80 and 443 are allowed');
   const host = url.hostname.replace(/^\[|\]$/g, '').toLowerCase();
-  if (host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local') || host.endsWith('.internal')) throw new Error('Private hosts are blocked');
-  if (net.isIP(host) && isPrivateAddress(host)) throw new Error('Private addresses are blocked');
+  if (host === 'localhost' || host.endsWith('.localhost') || host.endsWith('.local') || host.endsWith('.internal')) throw new FeedPolicyError('Private hosts are blocked');
+  if (net.isIP(host) && isPrivateAddress(host)) throw new FeedPolicyError('Private addresses are blocked');
   return url;
 }
 
 export async function resolvePublic(url, lookup = dns.lookup) {
   const records = await lookup(url.hostname, { all: true, verbatim: true });
-  if (!records.length || records.some(record => isPrivateAddress(record.address))) throw new Error('Feed host resolves to a private or unavailable address');
+  if (!records.length || records.some(record => isPrivateAddress(record.address))) throw new FeedPolicyError('Feed host resolves to a private or unavailable address');
   return records[0];
 }
 

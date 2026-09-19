@@ -1,13 +1,27 @@
 import { Agent, fetch } from 'undici';
-import { MAX_FEED_BYTES, FETCH_TIMEOUT_MS, MAX_REDIRECTS, allowedContentType, parsePublicHttpUrl, resolvePublic } from './feed-policy.mjs';
+import { FeedPolicyError, MAX_FEED_BYTES, FETCH_TIMEOUT_MS, MAX_REDIRECTS, allowedContentType, parsePublicHttpUrl, resolvePublic } from './feed-policy.mjs';
+
+export class FeedUpstreamError extends Error {
+  constructor(message, options) { super(message, options); this.name = 'FeedUpstreamError'; this.code = 'upstream_failure'; }
+}
+
+export function pinnedLookup(record) {
+  return (_host, options, callback) => {
+    // Undici requests all addresses on recent Node versions. Returning a scalar
+    // in that mode produces ERR_INVALID_IP_ADDRESS before any HTTP request.
+    if (options?.all) callback(null, [{ address: record.address, family: record.family }]);
+    else callback(null, record.address, record.family);
+  };
+}
 
 export async function fetchFeed(raw, dependencies = {}) {
   const request = dependencies.fetch ?? fetch;
   const resolve = dependencies.resolve ?? resolvePublic;
   let url = parsePublicHttpUrl(raw);
+  try {
   for (let redirects = 0; redirects <= MAX_REDIRECTS; redirects++) {
     const record = await resolve(url);
-    const dispatcher = dependencies.dispatcher?.(record, url) ?? new Agent({ connect: { lookup: (_host, _opts, callback) => callback(null, record.address, record.family) } });
+    const dispatcher = dependencies.dispatcher?.(record, url) ?? new Agent({ connect: { lookup: pinnedLookup(record) } });
     let response;
     try {
       response = await request(url, { method: 'GET', headers: { accept: 'application/atom+xml, application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.1', 'user-agent': 'gReader-Ionic/1.0' }, redirect: 'manual', signal: AbortSignal.timeout(FETCH_TIMEOUT_MS), dispatcher });
@@ -25,4 +39,8 @@ export async function fetchFeed(raw, dependencies = {}) {
     } finally { if (!dependencies.dispatcher && dispatcher?.close) await dispatcher.close(); }
   }
   throw new Error('Feed could not be fetched');
+  } catch (error) {
+    if (error instanceof FeedPolicyError || error instanceof FeedUpstreamError) throw error;
+    throw new FeedUpstreamError(error instanceof Error ? error.message : 'Feed fetch failed', { cause: error });
+  }
 }
