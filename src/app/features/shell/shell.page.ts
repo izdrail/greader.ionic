@@ -1,22 +1,23 @@
-import { Component, computed, OnInit, signal } from '@angular/core'; import { CommonModule } from '@angular/common'; import { RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
-import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonItem,IonItemOption,IonItemOptions,IonItemSliding,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonNote,IonFooter,IonRange,IonRefresher,IonRefresherContent,IonRow,IonSearchbar,IonSegment,IonSegmentButton,IonSplitPane,IonTitle,IonToolbar, ToastController } from '@ionic/angular';
+import { Component, computed, OnInit, signal } from '@angular/core'; import { CommonModule } from '@angular/common'; import { ActivatedRoute, RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
+import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonChip,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonItem,IonItemOption,IonItemOptions,IonItemSliding,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonNote,IonFooter,IonRange,IonRefresher,IonRefresherContent,IonRow,IonSearchbar,IonSegment,IonSegmentButton,IonSplitPane,IonTitle,IonToolbar, ToastController } from '@ionic/angular';
 import { addIcons } from 'ionicons'; import { addOutline,browsersOutline,checkmarkDoneOutline,chevronDownOutline,chevronForwardOutline,closeOutline,cloudOfflineOutline,downloadOutline,folderOutline,gridOutline,listOutline,mailOpenOutline,mailUnreadOutline,menuOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,refreshOutline,settingsOutline,star,starOutline,volumeHighOutline } from 'ionicons/icons';
 import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings'; import { PodcastPlayerService } from '../../core/services/podcast-player.service'; import { formatTime, PLAYBACK_RATES } from '../../core/domain/podcast-player';
 
 const MODE_ICONS: Record<string,string> = { list: 'grid-outline', grid: 'browsers-outline', card: 'list-outline' };
 
-@Component({selector:'app-shell',templateUrl:'shell.page.html',styleUrls:['shell.page.scss'],imports:[CommonModule,FormsModule,RouterLink,IonSplitPane,IonMenu,IonHeader,IonToolbar,IonTitle,IonContent,IonList,IonItem,IonItemSliding,IonItemOptions,IonItemOption,IonLabel,IonBadge,IonNote,IonMenuToggle,IonButtons,IonMenuButton,IonButton,IonIcon,IonSearchbar,IonSegment,IonSegmentButton,IonRefresher,IonRefresherContent,IonFooter,IonRange,IonGrid,IonRow,IonCol,IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent]})
+@Component({selector:'app-shell',templateUrl:'shell.page.html',styleUrls:['shell.page.scss'],imports:[CommonModule,FormsModule,RouterLink,IonSplitPane,IonMenu,IonHeader,IonToolbar,IonTitle,IonContent,IonList,IonItem,IonItemSliding,IonItemOptions,IonItemOption,IonLabel,IonBadge,IonNote,IonMenuToggle,IonButtons,IonMenuButton,IonButton,IonIcon,IonSearchbar,IonSegment,IonSegmentButton,IonRefresher,IonRefresherContent,IonFooter,IonRange,IonGrid,IonRow,IonCol,IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent,IonChip]})
 export class ShellPage implements OnInit {
-  accounts=signal<Account[]>([]);subscriptions=signal<Subscription[]>([]);folders=signal<Tag[]>([]);articles=signal<Article[]>([]);query=signal('');filter=signal<'all'|'unread'|'starred'>('all');collapsed=signal<ReadonlySet<string>>(new Set());
-  visible=computed(()=>this.articles().filter(x=>(this.filter()==='all'||this.filter()==='unread'&&!x.read||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
+  accounts=signal<Account[]>([]);subscriptions=signal<Subscription[]>([]);folders=signal<Tag[]>([]);articles=signal<Article[]>([]);query=signal('');filter=signal<'all'|'unread'|'starred'>('all');selectedSub=signal<string|undefined>(undefined);collapsed=signal<ReadonlySet<string>>(new Set());
+  selectedSubTitle=computed(()=>this.subscriptions().find(s=>s.id===this.selectedSub())?.title);
+  visible=computed(()=>this.articles().filter(x=>(!this.selectedSub()||x.subscriptionId===this.selectedSub())&&(this.filter()==='all'||this.filter()==='unread'&&!x.read||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
   foldered=computed(()=>groupByFolder(this.subscriptions(),this.folders(),this.prefs.feedSort()));
   nextModeIcon=computed(()=>MODE_ICONS[this.prefs.listMode()]);
 
-  constructor(private db:StoragePort,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService){
+  constructor(private db:StoragePort,private route:ActivatedRoute,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService){
     addIcons({menuOutline,refreshOutline,settingsOutline,listOutline,gridOutline,browsersOutline,downloadOutline,volumeHighOutline,star,starOutline,cloudOfflineOutline,addOutline,checkmarkDoneOutline,mailOpenOutline,mailUnreadOutline,folderOutline,chevronDownOutline,chevronForwardOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,closeOutline});
   }
 
-  async ngOnInit(){await this.themes.init();await Promise.all([this.prefs.init(),this.appSettings.init(),this.player.init()]);await this.load();await this.syncIfNeeded();}
+  async ngOnInit(){const sub=this.route.snapshot.queryParamMap.get('sub');if(sub)this.selectedSub.set(sub);await this.themes.init();await Promise.all([this.prefs.init(),this.appSettings.init(),this.player.init()]);await this.load();await this.syncIfNeeded();}
 
   /** Startup + interval sync honoring the persisted settings; notifies with the new-article count. */
   private async syncIfNeeded(force=false){
@@ -63,5 +64,6 @@ export class ShellPage implements OnInit {
   fmt=formatTime;
   async cycleRate(){const i=PLAYBACK_RATES.indexOf(this.player.rate());await this.player.setRate(PLAYBACK_RATES[(i+1)%PLAYBACK_RATES.length]);}
   quick(e:Event){e.preventDefault();e.stopPropagation();}
+  clearFeedFilter(){this.selectedSub.set(undefined);}
   track(_:number,x:{id:string}){return x.id;}
 }
