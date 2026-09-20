@@ -35,7 +35,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Audio/video enclosure playback | article HTML media controls | Implemented basic playback |
 | Podcast/music player/queue | article media + browser controls | Partial; dedicated background player missing |
 | Download/offline history | `/downloads` | Implemented cached list; queue/progress missing |
-| TTS activity/playlist | `/tts` | Implemented basic playlist/play/stop; voices/language/background controls partial |
+| TTS activity/playlist | `/tts` | Implemented; queue editor, voice/rate/pitch (persisted), media-session controls; true background audio is platform-limited |
 | Settings main/categories | `/settings` | Implemented foundation |
 | Look/feel and five themes | settings + theme service | Implemented |
 | Sync/offline/cache preferences | settings + sync service | Implemented; persisted, startup/interval sync, scheduler while app runs |

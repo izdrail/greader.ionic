@@ -12,6 +12,7 @@ import { absolutizeUrls, extractMainContent } from '../../core/domain/readabilit
 import { StoragePort } from '../../core/storage/storage.port';
 import { FeedHttpService } from '../../core/services/feed-http.service';
 import { ListPreferencesService } from '../../core/services/list-preferences.service';
+import { TtsService } from '../../core/services/tts.service';
 
 @Component({
   selector: 'app-article',
@@ -29,7 +30,7 @@ export class ArticlePage implements OnInit {
   body = computed<SafeHtml>(() => this.sanitizer.bypassSecurityTrustHtml(
     (this.mode() === 'simplified' && this.extracted()) || this.article()?.content || '<p>No article content was included in this feed.</p>'));
 
-  constructor(private route: ActivatedRoute, private db: StoragePort, private http: FeedHttpService, private sanitizer: DomSanitizer, public prefs: ListPreferencesService) {
+  constructor(private route: ActivatedRoute, private db: StoragePort, private http: FeedHttpService, private sanitizer: DomSanitizer, public prefs: ListPreferencesService, private tts: TtsService) {
     addIcons({ shareOutline, star, starOutline, volumeHighOutline, globeOutline, textOutline, contrastOutline, imageOutline });
   }
 
@@ -69,8 +70,8 @@ export class ArticlePage implements OnInit {
   async share() { const a = this.article(); if (a) await Share.share({ title: a.title, text: a.title, url: a.link }); }
   async openWeb() { const url = this.article()?.link; if (url) await Browser.open({ url }); }
   speak() {
-    const a = this.article(); if (!a || !('speechSynthesis' in window)) return;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(new SpeechSynthesisUtterance(`${a.title}. ${new DOMParser().parseFromString(a.content || '', 'text/html').body.textContent || ''}`));
+    const a = this.article(); if (!a) return;
+    this.tts.setQueue([a]);
+    this.tts.play(0);
   }
 }
