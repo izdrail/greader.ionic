@@ -26,9 +26,10 @@ export class ShellPage implements OnInit {
     if(!force&&!settings.syncOnStartup&&!account.lastSyncAt)return;
     if(!force&&!isSyncDue(account.lastSyncAt,settings.syncIntervalHours,Date.now()))return;
     try{
-      const newArticles=await this.sync.sync(account);
+      const outcome=await this.sync.sync(account);
       await this.load();
-      await this.notifications.notifySyncResult(newArticles,{notify:settings.notifyAfterSync,vibrate:settings.vibrate});
+      await this.notifications.notifySyncResult(outcome.newArticles,{notify:settings.notifyAfterSync,vibrate:settings.vibrate});
+      await this.notifications.notifyFeedAlerts(outcome.feedAlerts,{notify:settings.notifyAfterSync});
     }catch{/* offline or provider error; the sync service records lastError */}
   }
 

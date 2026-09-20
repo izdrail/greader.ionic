@@ -3,6 +3,7 @@ import { Article, Subscription } from '../domain/models';
 import { FeedParserService } from '../feeds/feed-parser.service';
 import { StoragePort } from '../storage/storage.port';
 import { FeedHttpService } from './feed-http.service';
+import { stableId } from '../domain/feed-refresh';
 
 @Injectable({ providedIn: 'root' })
 export class LocalFeedService {
@@ -46,5 +47,5 @@ export class LocalFeedService {
   }
 
   private normalizeUrl(value: string) { const v = value.trim(); return new URL(/^https?:\/\//i.test(v) ? v : `https://${v}`).toString(); }
-  private stableId(scope: string, value: string) { let hash = 2166136261; for (const char of value) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619); return `${scope}:${(hash >>> 0).toString(36)}`; }
+  private stableId = stableId;
 }
