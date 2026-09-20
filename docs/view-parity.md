@@ -33,7 +33,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Article star/read/share | article toolbar | Implemented |
 | Article tag/save page/image fit/invert/fonts/translate | article controls | Implemented font scale/invert/image fit (persisted); tag, save page, translate missing |
 | Audio/video enclosure playback | article HTML media controls | Implemented basic playback |
-| Podcast/music player/queue | article media + browser controls | Partial; dedicated background player missing |
+| Podcast/music player/queue | mini-player + media session | Implemented; queue, resume positions, speed, lock-screen controls |
 | Download/offline history | `/downloads` | Implemented cached list; queue/progress missing |
 | TTS activity/playlist | `/tts` | Implemented; queue editor, voice/rate/pitch (persisted), media-session controls; true background audio is platform-limited |
 | Settings main/categories | `/settings` | Implemented foundation |

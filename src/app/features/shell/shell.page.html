@@ -40,5 +40,10 @@
         </ion-card>
       </div>
     </ion-content>
+    <ion-footer *ngIf="player.current() as track"><ion-toolbar class="mini-player">
+      <ion-buttons slot="start"><ion-button [attr.aria-label]="player.playing() ? 'Pause' : 'Play'" (click)="player.toggle()"><ion-icon [name]="player.playing() ? 'pause-outline' : 'play-outline'"></ion-icon></ion-button><ion-button aria-label="Back 15 seconds" (click)="player.skip(-15)"><ion-icon name="play-back-outline"></ion-icon></ion-button><ion-button aria-label="Forward 30 seconds" (click)="player.skip(30)"><ion-icon name="play-forward-outline"></ion-icon></ion-button><ion-button aria-label="Next episode" (click)="player.next()"><ion-icon name="play-skip-forward-outline"></ion-icon></ion-button></ion-buttons>
+      <ion-title (click)="player.seek(0)">{{ track.title }}<p class="position">{{ fmt(player.position()) }} / {{ fmt(player.duration()) }} · {{ player.rate() }}x</p></ion-title>
+      <ion-buttons slot="end"><ion-button aria-label="Playback speed" (click)="cycleRate()"><strong>{{ player.rate() }}x</strong></ion-button><ion-button aria-label="Close player" (click)="player.stop()"><ion-icon name="close-outline"></ion-icon></ion-button></ion-buttons>
+    </ion-toolbar><ion-range class="progress" aria-label="Seek" [value]="player.position()" [max]="player.duration() || 100" (ionChange)="player.seek(+$event.detail.value)"></ion-range></ion-footer>
   </div>
 </ion-split-pane>
