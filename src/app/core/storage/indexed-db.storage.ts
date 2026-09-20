@@ -9,6 +9,6 @@ class GReaderDb extends Dexie { accounts!:Table<Account,string>; subscriptions!:
  getArticle(id:string){return this.db.articles.get(id);} async putArticles(v:Article[]){await this.db.articles.bulkPut(v);} async updateArticle(id:string,c:Partial<Article>){await this.db.articles.update(id,c);}
  async markArticlesRead(accountId:string,o:{before?:number;now?:number}={}){const now=o.now??Date.now();return this.db.articles.where('accountId').equals(accountId).filter(a=>!a.read&&(o.before===undefined||a.publishedAt<o.before)).modify({read:true,readAt:now});}
  async clearCachedArticles(accountId:string){return this.db.articles.where('accountId').equals(accountId).filter(a=>a.cached).modify({cached:false});} async deleteSubscription(id:string){await this.db.transaction('rw',this.db.subscriptions,this.db.articles,async()=>{await this.db.subscriptions.delete(id);await this.db.articles.where('subscriptionId').equals(id).delete();});}
- listTags(a:string){return this.db.tags.where('accountId').equals(a).sortBy('sort');} async putTags(v:Tag[]){await this.db.tags.bulkPut(v);}
+ listTags(a:string){return this.db.tags.where('accountId').equals(a).sortBy('sort');} async putTags(v:Tag[]){await this.db.tags.bulkPut(v);} async deleteTags(ids:string[]){await this.db.tags.bulkDelete(ids);}
  async enqueue(v:PendingMutation){await this.db.mutations.put(v);} pending(a:string){return this.db.mutations.where('accountId').equals(a).sortBy('createdAt');} async removePending(ids:string[]){await this.db.mutations.bulkDelete(ids);}
 }
