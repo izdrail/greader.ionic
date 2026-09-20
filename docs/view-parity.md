@@ -44,7 +44,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Backup/restore settings | settings | Implemented; versioned JSON export/import, native share or web download |
 | Clear cache | settings | Implemented; clears offline content flags and cache directory |
 | Premium screen | `/premium` | Implemented disclosure; store billing missing |
-| Feedback/send log | settings/menu | Missing |
+| Feedback/send log | settings | Implemented; feedback mailto + diagnostic report share/download |
 | GIF/video/YouTube overlays and PIP | article renderer | Implemented; YouTube click-to-play embeds, GIF fullscreen overlay, video PiP |
 | Widget icon/small/medium/large config | native Android | Missing |
 | Locale automation activity | native Android | Missing |
