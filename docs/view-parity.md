@@ -45,7 +45,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Clear cache | settings | Implemented; clears offline content flags and cache directory |
 | Premium screen | `/premium` | Implemented disclosure; store billing missing |
 | Feedback/send log | settings/menu | Missing |
-| GIF/video/YouTube overlays and PIP | article renderer | Basic HTML media only; specialized overlays missing |
+| GIF/video/YouTube overlays and PIP | article renderer | Implemented; YouTube click-to-play embeds, GIF fullscreen overlay, video PiP |
 | Widget icon/small/medium/large config | native Android | Missing |
 | Locale automation activity | native Android | Missing |
 
