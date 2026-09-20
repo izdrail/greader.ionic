@@ -4,6 +4,7 @@ import { FeedParserService } from '../feeds/feed-parser.service';
 import { StoragePort } from '../storage/storage.port';
 import { FeedHttpService } from './feed-http.service';
 import { stableId } from '../domain/feed-refresh';
+import { discoverFeedLinks } from '../domain/feed-discovery';
 
 @Injectable({ providedIn: 'root' })
 export class LocalFeedService {
@@ -14,10 +15,20 @@ export class LocalFeedService {
     const response = await this.http.get(normalized);
     if (response.status < 200 || response.status >= 300) throw new Error(`Feed request failed (${response.status})`);
     try { return await this.importXml(accountId, response.body, normalized); }
-    catch (error) {
-      const detail = error instanceof Error ? error.message : String(error);
-      throw new Error(`Could not parse feed: ${detail}`);
+    catch { /* not a feed document: try website feed discovery */ }
+    return this.subscribeViaDiscovery(accountId, normalized, response.body);
+  }
+
+  /** The URL points at a web page: follow its advertised feed links, then common feed paths. */
+  private async subscribeViaDiscovery(accountId: string, pageUrl: string, html: string): Promise<Subscription> {
+    for (const link of discoverFeedLinks(html, pageUrl)) {
+      try {
+        const feed = await this.http.get(link.url);
+        if (feed.status < 200 || feed.status >= 300) continue;
+        return await this.importXml(accountId, feed.body, link.url);
+      } catch { /* candidate was not a feed; keep looking */ }
     }
+    throw new Error('No feed found on that page. Paste the direct feed URL instead.');
   }
 
   async importXml(accountId: string, xml: string, sourceUrl?: string): Promise<Subscription> {

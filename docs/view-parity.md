@@ -19,7 +19,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Feed sorting/custom drag order | settings + `/subscriptions` reorder | Implemented; custom/alphabetical/unread/newest, drag order persisted |
 | Mark all / mark until / age options | article list toolbar | Implemented; all + 5 age windows |
 | Swipe and quick actions | article list | Implemented; swipe read/star in list mode, quick actions in grid/card |
-| Subscribe URL/search | `/subscribe` URL | Implemented URL; website feed discovery partial |
+| Subscribe URL/search | `/subscribe` URL | Implemented; website URLs follow advertised feed links then common feed paths |
 | Subscribe podcasts | `/subscribe` Podcasts | Implemented |
 | Browse directory | `/subscribe` Browse | Implemented, full 449/3403 APK data |
 | News directory | `/subscribe` News | Implemented, full 71/602 APK data |
