@@ -41,8 +41,8 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Sync/offline/cache preferences | settings + sync service | Implemented; persisted, startup/interval sync, scheduler while app runs |
 | Reading/article controls | settings | Implemented; persisted |
 | Notifications/custom feed alerts | settings + notifications service | Implemented post-sync local notification + haptics; per-feed alert scheduling missing |
-| Backup/restore settings | settings | Missing |
-| Clear cache | settings/home menu | Missing |
+| Backup/restore settings | settings | Implemented; versioned JSON export/import, native share or web download |
+| Clear cache | settings | Implemented; clears offline content flags and cache directory |
 | Premium screen | `/premium` | Implemented disclosure; store billing missing |
 | Feedback/send log | settings/menu | Missing |
 | GIF/video/YouTube overlays and PIP | article renderer | Basic HTML media only; specialized overlays missing |
