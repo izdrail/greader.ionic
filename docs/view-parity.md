@@ -15,10 +15,10 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Subscription/tag navigation | drawer and `/subscriptions` | Implemented subscriptions; tag tree/editor partial |
 | Article list: all/unread/starred | `/feeds` segments | Implemented |
 | Search articles | `/feeds` search | Implemented |
-| List/grid/card selection | settings control | Control present; grid/card rendering missing |
-| Feed sorting/custom drag order | settings/domain | Missing |
-| Mark all / mark until / age options | article list | Missing |
-| Swipe and quick actions | article list | Missing |
+| List/grid/card selection | settings + toolbar toggle | Implemented; list/grid/card renderers with persisted preference |
+| Feed sorting/custom drag order | settings + `/subscriptions` reorder | Implemented; custom/alphabetical/unread/newest, drag order persisted |
+| Mark all / mark until / age options | article list toolbar | Implemented; all + 5 age windows |
+| Swipe and quick actions | article list | Implemented; swipe read/star in list mode, quick actions in grid/card |
 | Subscribe URL/search | `/subscribe` URL | Implemented URL; website feed discovery partial |
 | Subscribe podcasts | `/subscribe` Podcasts | Implemented |
 | Browse directory | `/subscribe` Browse | Implemented, full 449/3403 APK data |

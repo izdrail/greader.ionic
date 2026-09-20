@@ -1,0 +1,62 @@
+import { ArticleActionsService } from './article-actions.service';
+import { Article, PendingMutation } from '../domain/models';
+
+function article(partial: Partial<Article> = {}): Article {
+  return {
+    id: 'a:1', accountId: 'a', subscriptionId: 's', uid: 'u1', title: 'One', publishedAt: 1, updatedAt: 1,
+    starred: false, cached: true, read: false, keepUnread: false, ...partial,
+  };
+}
+
+function storage() {
+  const queued: PendingMutation[] = [];
+  return {
+    queued,
+    updates: [] as { id: string; change: Partial<Article> }[],
+    updateArticle: async function (this: any, id: string, change: Partial<Article>) { this.updates.push({ id, change }); },
+    markArticlesRead: async (_accountId: string, _options: { before?: number }) => 7,
+    enqueue: async (value: PendingMutation) => { queued.push(value); },
+  } as any;
+}
+
+describe('ArticleActionsService', () => {
+  it('marks an article read and queues the read mutation', async () => {
+    const db = storage();
+    const service = new ArticleActionsService(db);
+    const updated = await service.setRead(article(), true);
+    expect(updated.read).toBe(true);
+    expect(updated.readAt).toBeDefined();
+    expect(db.updates).toHaveLength(1);
+    expect(db.updates[0].id).toBe('a:1');
+    expect(db.updates[0].change.read).toBe(true);
+    expect(db.queued.map((x: PendingMutation) => [x.kind, x.value, x.articleUid])).toEqual([['read', true, 'u1']]);
+  });
+
+  it('keeps an article unread when marking it unread again', async () => {
+    const db = storage();
+    const service = new ArticleActionsService(db);
+    const updated = await service.setRead(article({ read: true }), false);
+    expect(updated.read).toBe(false);
+    expect(updated.keepUnread).toBe(true);
+    expect(db.queued[0].value).toBe(false);
+  });
+
+  it('stars and unstars with a queued star mutation', async () => {
+    const db = storage();
+    const service = new ArticleActionsService(db);
+    expect((await service.setStarred(article(), true)).starred).toBe(true);
+    expect((await service.setStarred(article({ starred: true }), false)).starred).toBe(false);
+    expect(db.queued.map((x: PendingMutation) => x.kind)).toEqual(['star', 'star']);
+  });
+
+  it('delegates mark-all with the resolved age cutoff', async () => {
+    const db = storage();
+    const calls: { before?: number }[] = [];
+    db.markArticlesRead = async (_a: string, o: { before?: number }) => { calls.push(o); return 3; };
+    const service = new ArticleActionsService(db);
+    expect(await service.markAllRead('a', 'all')).toBe(3);
+    expect(await service.markAllRead('a', 'week')).toBe(3);
+    expect(calls[0].before).toBeUndefined();
+    expect(calls[1].before).toBeLessThan(Date.now());
+  });
+});
