@@ -12,7 +12,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Local RSS login/start | account card -> `/subscribe` | Implemented |
 | Phone home/drawer | `/feeds` responsive drawer | Implemented |
 | Tablet master-detail home | split pane at 768px | Implemented structure |
-| Subscription/tag navigation | drawer and `/subscriptions` | Implemented subscriptions; tag tree/editor partial |
+| Subscription/tag navigation | drawer and `/subscriptions` | Implemented; folder tree in drawer, folder create/assign in management |
 | Article list: all/unread/starred | `/feeds` segments | Implemented |
 | Search articles | `/feeds` search | Implemented |
 | List/grid/card selection | settings + toolbar toggle | Implemented; list/grid/card renderers with persisted preference |
@@ -26,7 +26,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | OPML import | `/subscribe` OPML | Implemented |
 | OPML export | `/subscriptions` toolbar | Implemented; native share sheet, web download |
 | Manage sources | `/subscriptions` | Implemented list; per-feed detail/editor partial |
-| Change folder / tag edit | subscription/article dialogs | Missing |
+| Change folder / tag edit | subscription management | Implemented folder assign; tag editor and folder rename/delete missing |
 | Article feed view | `/article/:id` Feed | Implemented |
 | Article simplified/reading view | `/article/:id` Reading | Shell only; extraction missing |
 | Original web view | `/article/:id` Web | Opens original URL |

@@ -4,7 +4,7 @@ export type ReadingMode = 'feed' | 'original' | 'simplified';
 
 export interface Account { id: string; provider: ProviderKind; label: string; createdAt: number; lastSyncAt?: number; }
 export interface Subscription {
-  id: string; accountId: string; uid: string; title: string; feedUrl?: string; htmlUrl?: string; iconUrl?: string;
+  id: string; accountId: string; uid: string; title: string; feedUrl?: string; htmlUrl?: string; iconUrl?: string; folderId?: string;
   sort: number; unreadCount: number; newestItemAt: number; syncExcluded: boolean; hidden: boolean; notification: boolean;
   imageFit: boolean; javascript: boolean; offlineContent: -1 | 0 | 1 | 2 | 3 | 4; displayContent: -1 | 0 | 1;
   linkFormat: -1 | 0 | 1; autoReadability: -1 | 0 | 1 | 2; userAgent: -1 | 0 | 1 | 2 | 3; charset?: string;
