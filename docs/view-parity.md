@@ -25,7 +25,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | News directory | `/subscribe` News | Implemented, full 71/602 APK data |
 | OPML import | `/subscribe` OPML | Implemented |
 | OPML export | `/subscriptions` toolbar | Implemented; native share sheet, web download |
-| Manage sources | `/subscriptions` | Implemented list; per-feed detail/editor partial |
+| Manage sources | `/subscriptions` | Implemented; per-feed preferences editor (notify/sync/hide/offline/display/readability/UA) |
 | Change folder / tag edit | subscription management | Implemented folder assign; tag editor and folder rename/delete missing |
 | Article feed view | `/article/:id` Feed | Implemented |
 | Article simplified/reading view | `/article/:id` Reading | Shell only; extraction missing |
