@@ -28,10 +28,10 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Manage sources | `/subscriptions` | Implemented; per-feed preferences editor (notify/sync/hide/offline/display/readability/UA) |
 | Change folder / tag edit | subscription management | Implemented folder assign; tag editor and folder rename/delete missing |
 | Article feed view | `/article/:id` Feed | Implemented |
-| Article simplified/reading view | `/article/:id` Reading | Shell only; extraction missing |
+| Article simplified/reading view | `/article/:id` Reading | Implemented; readability extraction with absolute URLs |
 | Original web view | `/article/:id` Web | Opens original URL |
 | Article star/read/share | article toolbar | Implemented |
-| Article tag/save page/image fit/invert/fonts/translate | article controls | Missing |
+| Article tag/save page/image fit/invert/fonts/translate | article controls | Implemented font scale/invert/image fit (persisted); tag, save page, translate missing |
 | Audio/video enclosure playback | article HTML media controls | Implemented basic playback |
 | Podcast/music player/queue | article media + browser controls | Partial; dedicated background player missing |
 | Download/offline history | `/downloads` | Implemented cached list; queue/progress missing |
