@@ -12,7 +12,11 @@ export class LocalFeedService {
     const normalized = this.normalizeUrl(url);
     const response = await this.http.get(normalized);
     if (response.status < 200 || response.status >= 300) throw new Error(`Feed request failed (${response.status})`);
-    return this.importXml(accountId, response.body, normalized);
+    try { return await this.importXml(accountId, response.body, normalized); }
+    catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      throw new Error(`Could not parse feed: ${detail}`);
+    }
   }
 
   async importXml(accountId: string, xml: string, sourceUrl?: string): Promise<Subscription> {

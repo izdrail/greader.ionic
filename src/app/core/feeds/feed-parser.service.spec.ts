@@ -1,1 +1,32 @@
-import { FeedParserService } from './feed-parser.service'; describe('FeedParserService',()=>{const p=new FeedParserService();it('parses RSS content and enclosures',()=>{const f=p.parse(`<rss><channel><title>News</title><item><guid>x</guid><title>Hello</title><description><![CDATA[<p>Body<img src="https://x/i.jpg"></p>]]></description><enclosure url="https://x/a.mp3" type="audio/mpeg"/><pubDate>Sat, 19 Sep 2026 08:00:00 GMT</pubDate></item></channel></rss>`);expect(f.title).toBe('News');expect(f.items[0]).toMatchObject({uid:'x',title:'Hello',audio:'https://x/a.mp3',image:'https://x/i.jpg'});});it('parses Atom alternate links',()=>{const f=p.parse(`<feed xmlns="http://www.w3.org/2005/Atom"><title>A</title><entry><id>1</id><title>T</title><link rel="alternate" href="https://x/1"/><updated>2026-09-19T08:00:00Z</updated></entry></feed>`);expect(f.items[0].link).toBe('https://x/1');});});
+import { FeedParserService } from './feed-parser.service';
+
+describe('FeedParserService', () => {
+  const parser = new FeedParserService();
+
+  it('parses RSS content, media and enclosures', () => {
+    const feed = parser.parse(`<rss><channel><title>News</title><item><guid>x</guid><title>Hello</title><description><![CDATA[<p>Body<img src="https://x/i.jpg"></p>]]></description><enclosure url="https://x/a.mp3" type="audio/mpeg"/><pubDate>Sat, 19 Sep 2026 08:00:00 GMT</pubDate></item></channel></rss>`);
+    expect(feed.title).toBe('News');
+    expect(feed.items[0]).toMatchObject({ uid: 'x', title: 'Hello', audio: 'https://x/a.mp3', image: 'https://x/i.jpg' });
+  });
+
+  it('parses Atom alternate links', () => {
+    const feed = parser.parse(`<feed xmlns="http://www.w3.org/2005/Atom"><title>A</title><entry><id>1</id><title>T</title><link rel="alternate" href="https://x/1"/><updated>2026-09-19T08:00:00Z</updated></entry></feed>`);
+    expect(feed.items[0].link).toBe('https://x/1');
+  });
+
+  it('parses RDF/RSS 1.0 feeds whose items are siblings of the channel', () => {
+    const feed = parser.parse(`<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"><channel><title>RDF News</title><link>https://x/</link></channel><item rdf:about="https://x/1"><title>Story</title><link>https://x/1</link><date>2026-09-20T10:00:00Z</date></item></rdf:RDF>`);
+    expect(feed.title).toBe('RDF News');
+    expect(feed.items[0]).toMatchObject({ uid: 'https://x/1', title: 'Story', link: 'https://x/1' });
+  });
+
+  it('parses JSON Feed with attachments', () => {
+    const feed = parser.parse(JSON.stringify({ version: 'https://jsonfeed.org/version/1.1', title: 'JSON News', home_page_url: 'https://x/', items: [{ id: 'j1', title: 'Audio', content_html: '<p>Hello</p>', date_published: '2026-09-20T11:00:00Z', attachments: [{ url: 'https://x/a.mp3', mime_type: 'audio/mpeg' }] }] }));
+    expect(feed.items[0]).toMatchObject({ uid: 'j1', audio: 'https://x/a.mp3' });
+  });
+
+  it('reports HTML and malformed XML clearly', () => {
+    expect(() => parser.parse('<html><body>Not a feed</body></html>')).toThrow('web page, not an RSS or Atom feed');
+    expect(() => parser.parse('<rss><channel>')).toThrow('invalid XML');
+  });
+});
