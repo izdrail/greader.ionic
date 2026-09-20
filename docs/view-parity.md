@@ -46,7 +46,7 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | Premium screen | `/premium` | Implemented disclosure; store billing missing |
 | Feedback/send log | settings | Implemented; feedback mailto + diagnostic report share/download |
 | GIF/video/YouTube overlays and PIP | article renderer | Implemented; YouTube click-to-play embeds, GIF fullscreen overlay, video PiP |
-| Widget icon/small/medium/large config | native Android | Missing |
-| Locale automation activity | native Android | Missing |
+| Widget icon/small/medium/large config | native Android | Stub added (resizable unread-count widget + NativeBridge plugin); UNVERIFIED - no Android toolchain here, see docs/native-bridge.md |
+| Locale automation activity | native Android | Stub added (per-app locale preference + MainActivity re-apply); UNVERIFIED - no Android toolchain here, see docs/native-bridge.md |
 
 "1:1" remains open until every Partial/Missing row is implemented and runtime-compared against API 29/API 23 APKs. Static layout matching is not runtime proof.

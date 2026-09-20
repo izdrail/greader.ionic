@@ -42,3 +42,15 @@ describe('countNewArticles', () => {
     expect(countNewArticles([100], 150)).toBe(0);
   });
 });
+
+describe('locale setting', () => {
+  it('defaults to system and keeps a valid stored locale', () => {
+    expect(sanitizeSettings(null).locale).toBe('system');
+    expect(sanitizeSettings(JSON.stringify({ locale: 'en' })).locale).toBe('en');
+  });
+
+  it('drops malformed locales', () => {
+    expect(sanitizeSettings(JSON.stringify({ locale: 'klingon!!' })).locale).toBe('system');
+    expect(sanitizeSettings(JSON.stringify({ locale: 42 })).locale).toBe('system');
+  });
+});

@@ -8,6 +8,7 @@ export interface AppSettings {
   autoloadReading: boolean;
   notifyAfterSync: boolean;
   vibrate: boolean;
+  locale: string;
 }
 
 export const DEFAULT_SETTINGS: AppSettings = {
@@ -20,7 +21,13 @@ export const DEFAULT_SETTINGS: AppSettings = {
   autoloadReading: false,
   notifyAfterSync: true,
   vibrate: false,
+  locale: 'system',
 };
+
+export const LOCALE_OPTIONS: { value: string; label: string }[] = [
+  { value: 'system', label: 'System default' },
+  { value: 'en', label: 'English' },
+];
 
 export const SYNC_INTERVAL_OPTIONS: { value: AppSettings['syncIntervalHours']; label: string }[] = [
   { value: 1, label: 'Hourly' },
@@ -42,6 +49,8 @@ export function sanitizeSettings(raw: string | null | undefined): AppSettings {
   for (const key of TOGGLES) if (typeof input[key] === 'boolean') out[key] = input[key] as boolean;
   const interval = input['syncIntervalHours'];
   if (interval === 1 || interval === 4 || interval === 12 || interval === 24) out.syncIntervalHours = interval;
+  const locale = input['locale'];
+  if (typeof locale === 'string' && /^(system|[a-z]{2}(-[a-zA-Z]{2})?)$/.test(locale)) out.locale = locale;
   return out;
 }
 
