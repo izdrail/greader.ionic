@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'; import { Account, PendingMutation, ProviderKind } from '../domain/models'; import { ProviderAdapter, SyncSnapshot } from './provider.port';
-abstract class CloudProvider extends ProviderAdapter { abstract readonly kind:ProviderKind; async connect():Promise<Account>{throw new Error(`${this.kind} authentication is not configured. Historical APK credentials are intentionally not reused.`);} async sync():Promise<SyncSnapshot>{throw new Error(`${this.kind} adapter requires current API verification.`);} async push(_a:Account,_c:PendingMutation[]){throw new Error(`${this.kind} mutation API requires current verification.`);} }
-@Injectable({providedIn:'root'}) export class FeedlyProvider extends CloudProvider{readonly kind='feedly' as const;}
-@Injectable({providedIn:'root'}) export class InoreaderProvider extends CloudProvider{readonly kind='inoreader' as const;}
-@Injectable({providedIn:'root'}) export class OldReaderProvider extends CloudProvider{readonly kind='old-reader' as const;}
+abstract class CloudProvider extends ProviderAdapter { abstract override readonly kind:ProviderKind; override async connect():Promise<Account>{throw new Error(`${this.kind} authentication is not configured. Historical APK credentials are intentionally not reused.`);} override async sync():Promise<SyncSnapshot>{throw new Error(`${this.kind} adapter requires current API verification.`);} override async push(_a:Account,_c:PendingMutation[]):Promise<string[]>{throw new Error(`${this.kind} mutation API requires current verification.`);} }
+@Injectable({providedIn:'root'}) export class FeedlyProvider extends CloudProvider{override readonly kind='feedly' as const;}
+@Injectable({providedIn:'root'}) export class InoreaderProvider extends CloudProvider{override readonly kind='inoreader' as const;}
+@Injectable({providedIn:'root'}) export class OldReaderProvider extends CloudProvider{override readonly kind='old-reader' as const;}

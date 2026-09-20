@@ -38,9 +38,9 @@ Evidence comes from the decoded manifest, first-party layouts, menus, activities
 | TTS activity/playlist | `/tts` | Implemented basic playlist/play/stop; voices/language/background controls partial |
 | Settings main/categories | `/settings` | Implemented foundation |
 | Look/feel and five themes | settings + theme service | Implemented |
-| Sync/offline/cache preferences | settings | Visible controls; persistence/scheduler partial |
-| Reading/article controls | settings | Visible controls; persistence partial |
-| Notifications/custom feed alerts | settings | Visible controls; native scheduling missing |
+| Sync/offline/cache preferences | settings + sync service | Implemented; persisted, startup/interval sync, scheduler while app runs |
+| Reading/article controls | settings | Implemented; persisted |
+| Notifications/custom feed alerts | settings + notifications service | Implemented post-sync local notification + haptics; per-feed alert scheduling missing |
 | Backup/restore settings | settings | Missing |
 | Clear cache | settings/home menu | Missing |
 | Premium screen | `/premium` | Implemented disclosure; store billing missing |

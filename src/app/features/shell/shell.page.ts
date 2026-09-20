@@ -1,7 +1,7 @@
 import { Component, computed, OnInit, signal } from '@angular/core'; import { CommonModule } from '@angular/common'; import { RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
 import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonItem,IonItemOption,IonItemOptions,IonItemSliding,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonNote,IonRefresher,IonRefresherContent,IonRow,IonSearchbar,IonSegment,IonSegmentButton,IonSplitPane,IonTitle,IonToolbar, ToastController } from '@ionic/angular';
 import { addIcons } from 'ionicons'; import { addOutline,browsersOutline,checkmarkDoneOutline,chevronDownOutline,chevronForwardOutline,cloudOfflineOutline,downloadOutline,folderOutline,gridOutline,listOutline,mailOpenOutline,mailUnreadOutline,menuOutline,refreshOutline,settingsOutline,star,starOutline,volumeHighOutline } from 'ionicons/icons';
-import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service';
+import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings';
 
 const MODE_ICONS: Record<string,string> = { list: 'grid-outline', grid: 'browsers-outline', card: 'list-outline' };
 
@@ -12,11 +12,24 @@ export class ShellPage implements OnInit {
   foldered=computed(()=>groupByFolder(this.subscriptions(),this.folders(),this.prefs.feedSort()));
   nextModeIcon=computed(()=>MODE_ICONS[this.prefs.listMode()]);
 
-  constructor(private db:StoragePort,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService){
+  constructor(private db:StoragePort,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService){
     addIcons({menuOutline,refreshOutline,settingsOutline,listOutline,gridOutline,browsersOutline,downloadOutline,volumeHighOutline,star,starOutline,cloudOfflineOutline,addOutline,checkmarkDoneOutline,mailOpenOutline,mailUnreadOutline,folderOutline,chevronDownOutline,chevronForwardOutline});
   }
 
-  async ngOnInit(){await this.themes.init();await this.prefs.init();await this.load();}
+  async ngOnInit(){await this.themes.init();await Promise.all([this.prefs.init(),this.appSettings.init()]);await this.load();await this.syncIfNeeded();}
+
+  /** Startup + interval sync honoring the persisted settings; notifies with the new-article count. */
+  private async syncIfNeeded(force=false){
+    const account=this.accounts()[0];if(!account)return;
+    const settings=this.appSettings.settings();
+    if(!force&&!settings.syncOnStartup&&!account.lastSyncAt)return;
+    if(!force&&!isSyncDue(account.lastSyncAt,settings.syncIntervalHours,Date.now()))return;
+    try{
+      const newArticles=await this.sync.sync(account);
+      await this.load();
+      await this.notifications.notifySyncResult(newArticles,{notify:settings.notifyAfterSync,vibrate:settings.vibrate});
+    }catch{/* offline or provider error; the sync service records lastError */}
+  }
 
   async load(){
     const a=await this.db.listAccounts();this.accounts.set(a);
@@ -31,7 +44,7 @@ export class ShellPage implements OnInit {
     }
   }
 
-  async refresh(e:any){await this.load();e.target.complete();}
+  async refresh(e:any){await this.load();await this.syncIfNeeded(true);e.target.complete();}
 
   toggleFolder(id:string){this.collapsed.update(set=>{const next=new Set(set);if(next.has(id))next.delete(id);else next.add(id);return next;});}
 
