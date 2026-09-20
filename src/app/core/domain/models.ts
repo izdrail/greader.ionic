@@ -13,7 +13,7 @@ export interface Tag { id: string; accountId: string; uid: string; type: 'folder
 export interface Article {
   id: string; accountId: string; subscriptionId: string; uid: string; title: string; content?: string; author?: string;
   link?: string; image?: string; video?: string; audio?: string; publishedAt: number; updatedAt: number; starred: boolean;
-  cached: boolean; read: boolean; readAt?: number; keepUnread: boolean; syncAt?: number;
+  cached: boolean; read: boolean; readAt?: number; keepUnread: boolean; syncAt?: number; tags?: string[];
 }
 export interface PendingMutation { id: string; accountId: string; articleUid: string; kind: 'read'|'star'|'tag'; value: boolean|string; createdAt: number; attempts: number; }
 export interface ParsedFeed { title: string; link?: string; description?: string; language?: string; image?: string; items: ParsedFeedItem[]; }
