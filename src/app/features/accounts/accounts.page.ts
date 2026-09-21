@@ -11,9 +11,6 @@ import { ProviderKind } from '../../core/domain/models';
 export class AccountsPage {
   selected = signal<ProviderKind | undefined>(undefined); busy = signal(false); error = signal(''); username = ''; password = '';
   providers = [
-    { id: 'feedly' as const, name: 'Feedly Cloud', logo: 'logo_feedly.png', text: 'Connect with Feedly OAuth and synchronize subscriptions and reading state.' },
-    { id: 'inoreader' as const, name: 'Inoreader', logo: 'logo_inoreader.png', text: 'Connect an Inoreader account.' },
-    { id: 'old-reader' as const, name: 'The Old Reader', logo: 'logo_old_reader.png', text: 'Connect a The Old Reader account.' },
     { id: 'local' as const, name: 'RSS Reader (Local)', logo: 'logo_rss_reader_large.png', text: 'No account required. Feeds and articles stay on this device.' },
   ];
   constructor(private storage: StoragePort, private local: LocalProvider, private router: Router) {}
