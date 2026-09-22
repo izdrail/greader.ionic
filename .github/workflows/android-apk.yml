@@ -28,6 +28,16 @@ jobs:
           java-version: '21'
 
       - run: npm ci
+
+      # AdMob ships only when the repo variable ENABLE_ADMOB is set to 'true'
+      # (Settings -> Secrets and variables -> Actions -> Variables). Default:
+      # ads are stripped from the final app - no SDK, no manifest entry, no ad code.
+      - name: Strip AdMob (ENABLE_ADMOB is not true)
+        if: ${{ vars.ENABLE_ADMOB != 'true' }}
+        run: |
+          npm rm @capacitor-community/admob
+          node scripts/strip-admob.mjs
+
       - run: npm run build
       - run: npx cap sync android
 
