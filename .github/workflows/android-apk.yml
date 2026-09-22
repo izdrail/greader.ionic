@@ -42,3 +42,31 @@ jobs:
           name: greader-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+
+      # Signed release AAB for Play. No-ops until the repo secrets exist:
+      # KEYSTORE_BASE64 (base64 of the .keystore), KEYSTORE_PASSWORD,
+      # KEY_PASSWORD and optionally KEY_ALIAS (defaults to greader).
+      - name: Build signed release AAB
+        working-directory: android
+        env:
+          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: |
+          if [ -z "$KEYSTORE_BASE64" ]; then
+            echo "No signing secrets configured - skipping the release AAB."
+            exit 0
+          fi
+          echo "$KEYSTORE_BASE64" | base64 -d > app/greader-news.keystore
+          export KEYSTORE_FILE="$PWD/app/greader-news.keystore"
+          export KEY_ALIAS="${KEY_ALIAS:-greader}"
+          chmod +x gradlew
+          ./gradlew bundleRelease --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('android/app/build/outputs/bundle/release/app-release.aab') != '' }}
+        with:
+          name: greader-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 30

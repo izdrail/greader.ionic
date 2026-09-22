@@ -16,10 +16,24 @@ android {
             ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
         }
     }
+    signingConfigs {
+        release {
+            storeFile System.getenv("KEYSTORE_FILE") ? file(System.getenv("KEYSTORE_FILE")) : null
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // Signed release activates only when the CI secrets are present (the
+            // android-apk workflow decodes the keystore and exports these).
+            // Without them the release build stays unsigned, exactly as before.
+            if (System.getenv("KEYSTORE_FILE") && System.getenv("KEYSTORE_PASSWORD") && System.getenv("KEY_PASSWORD")) {
+                signingConfig signingConfigs.release
+            }
         }
     }
 }
