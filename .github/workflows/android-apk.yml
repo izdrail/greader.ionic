@@ -53,10 +53,11 @@ jobs:
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
 
-      # Signed release AAB for Play. No-ops until the repo secrets exist:
+      # Signed release AAB (for Play) and signed release APK (direct install).
+      # No-ops until the repo secrets exist:
       # KEYSTORE_BASE64 (base64 of the .keystore), KEYSTORE_PASSWORD,
       # KEY_PASSWORD and optionally KEY_ALIAS (defaults to greader).
-      - name: Build signed release AAB
+      - name: Build signed release AAB + APK
         working-directory: android
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
@@ -72,11 +73,18 @@ jobs:
           export KEYSTORE_FILE="$PWD/app/greader-news.keystore"
           export KEY_ALIAS="${KEY_ALIAS:-greader}"
           chmod +x gradlew
-          ./gradlew bundleRelease --no-daemon
+          ./gradlew bundleRelease assembleRelease --no-daemon
 
       - uses: actions/upload-artifact@v4
         if: ${{ hashFiles('android/app/build/outputs/bundle/release/app-release.aab') != '' }}
         with:
           name: greader-release-aab
           path: android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 30
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ hashFiles('android/app/build/outputs/apk/release/app-release.apk') != '' }}
+        with:
+          name: greader-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
           retention-days: 30
