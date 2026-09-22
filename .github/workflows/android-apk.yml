@@ -68,7 +68,7 @@ jobs:
             echo "No signing secrets configured - skipping the release AAB."
             exit 0
           fi
-          echo "$KEYSTORE_BASE64" | base64 -d > app/greader-news.keystore
+          echo "$KEYSTORE_BASE64" | tr -cd 'A-Za-z0-9+/=' | base64 -d > app/greader-news.keystore
           export KEYSTORE_FILE="$PWD/app/greader-news.keystore"
           export KEY_ALIAS="${KEY_ALIAS:-greader}"
           chmod +x gradlew
