@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router'; export const routes:Routes=[
+{path:'',loadComponent:()=>import('./features/welcome/home-redirect.page').then(m=>m.HomeRedirectPage)},
 {path:'welcome',loadComponent:()=>import('./features/welcome/welcome.page').then(m=>m.WelcomePage)},
 {path:'accounts',loadComponent:()=>import('./features/accounts/accounts.page').then(m=>m.AccountsPage)},
 {path:'subscribe',loadComponent:()=>import('./features/subscribe/subscribe.page').then(m=>m.SubscribePage)},
@@ -9,4 +10,4 @@ import { Routes } from '@angular/router'; export const routes:Routes=[
 {path:'feeds',loadComponent:()=>import('./features/shell/shell.page').then(m=>m.ShellPage)},
 {path:'article/:id',loadComponent:()=>import('./features/article/article.page').then(m=>m.ArticlePage)},
 {path:'settings',loadComponent:()=>import('./features/settings/settings.page').then(m=>m.SettingsPage)},
-{path:'',redirectTo:'welcome',pathMatch:'full'},{path:'**',redirectTo:'welcome'}];
+{path:'**',redirectTo:''}];

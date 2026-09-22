@@ -11,12 +11,15 @@
   </ion-content></ion-menu>
   <div class="ion-page" id="main"><ion-header><ion-toolbar color="primary"><ion-buttons slot="start"><ion-menu-button></ion-menu-button></ion-buttons><ion-title>Articles</ion-title><ion-buttons slot="end"><ion-button aria-label="Mark articles as read" (click)="confirmMarkAll()"><ion-icon name="checkmark-done-outline"></ion-icon></ion-button><ion-button aria-label="Change article list layout" (click)="cycleListMode()"><ion-icon [name]="nextModeIcon()"></ion-icon></ion-button><ion-button aria-label="Add feed" routerLink="/subscribe"><ion-icon name="add-outline"></ion-icon></ion-button></ion-buttons></ion-toolbar><ion-toolbar><ion-searchbar placeholder="Search and filter" [ngModel]="query()" (ngModelChange)="query.set($event)"></ion-searchbar><ion-segment [ngModel]="filter()" (ngModelChange)="filter.set($event)"><ion-segment-button value="all">All</ion-segment-button><ion-segment-button value="unread">Unread</ion-segment-button><ion-segment-button value="starred">Starred</ion-segment-button></ion-segment></ion-toolbar></ion-header>
     <ion-content><ion-refresher slot="fixed" (ionRefresh)="refresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
-      <div class="empty" *ngIf="!visible().length"><img src="assets/icon/favicon.png" alt=""><h2>Your reading list is empty</h2><p>Add a local RSS feed or connect a provider. Articles will remain available offline after syncing.</p><ion-button routerLink="/subscribe">Add a feed</ion-button></div>
+      <div class="empty state" *ngIf="loading()"><ion-spinner name="crescent"></ion-spinner><h2>Loading articles</h2><p>Your reading list is on its way.</p></div>
+      <div class="empty state" *ngIf="!loading()&&loadError()"><ion-icon class="state-icon" name="cloud-offline-outline"></ion-icon><h2>Articles could not be loaded</h2><p>Check your connection and try again.</p><ion-button (click)="retryLoad()"><ion-icon name="refresh-outline" slot="start"></ion-icon>Retry</ion-button></div>
+      <div class="empty" *ngIf="!loading()&&!loadError()&&!articles().length"><img src="assets/icon/favicon.png" alt=""><h2>Your reading list is empty</h2><p>Add a local RSS feed or connect a provider. Articles will remain available offline after syncing.</p><ion-button routerLink="/subscribe">Add a feed</ion-button></div>
+      <div class="empty state" *ngIf="!loading()&&!loadError()&&articles().length&&!visible().length"><h2>No articles match</h2><p>Try a different search term, filter or feed.</p></div>
 
       <ion-list *ngIf="visible().length && prefs.listMode()==='list'">
         <ion-item-sliding *ngFor="let article of visible(); trackBy: track" #slider>
           <ion-item-options side="start"><ion-item-option [color]="article.read ? 'warning' : 'success'" (click)="toggleRead(article); slider.close()"><ion-icon slot="icon-only" [name]="article.read ? 'mail-unread-outline' : 'mail-open-outline'"></ion-icon></ion-item-option></ion-item-options>
-          <ion-item [class.unread]="!article.read" button [routerLink]="['/article', article.id]"><ion-label><h2>{{article.title}}</h2><p>{{article.author}} · {{article.publishedAt | date:'medium'}}</p><p class="snippet">{{article.content}}</p></ion-label><ion-icon name="star" slot="end" color="warning" *ngIf="article.starred"></ion-icon></ion-item>
+          <ion-item [class.unread]="!article.read" button [routerLink]="['/article', article.id]"><ion-label><h2>{{cleanTitle(article)}}</h2><p *ngIf="meta(article)">{{meta(article)}}</p><p class="snippet" *ngIf="preview(article)">{{preview(article)}}</p></ion-label><ion-icon name="star" slot="end" color="warning" *ngIf="article.starred"></ion-icon></ion-item>
           <ion-item-options side="end"><ion-item-option color="warning" (click)="toggleStar(article); slider.close()"><ion-icon slot="icon-only" [name]="article.starred ? 'star' : 'star-outline'"></ion-icon></ion-item-option></ion-item-options>
         </ion-item-sliding>
       </ion-list>
@@ -24,8 +27,8 @@
       <ion-grid fixed *ngIf="visible().length && prefs.listMode()==='grid'"><ion-row>
         <ion-col size="6" size-md="4" size-lg="3" *ngFor="let article of visible(); trackBy: track">
           <ion-card button [routerLink]="['/article', article.id]" [class.unread]="!article.read">
-            <img *ngIf="article.image" [src]="article.image" alt="" loading="lazy">
-            <ion-card-header><ion-card-title>{{article.title}}</ion-card-title><ion-card-subtitle>{{article.publishedAt | date:'mediumDate'}}</ion-card-subtitle></ion-card-header>
+            <img *ngIf="article.image" [src]="article.image" alt="" loading="lazy" (error)="hideBrokenImage($event)">
+            <ion-card-header><ion-card-title>{{cleanTitle(article)}}</ion-card-title><ion-card-subtitle *ngIf="article.publishedAt>0">{{article.publishedAt | date:'mediumDate'}}</ion-card-subtitle></ion-card-header>
             <div class="quick"><ion-button fill="clear" size="small" [attr.aria-label]="article.read ? 'Keep unread' : 'Mark read'" (click)="quick($event); toggleRead(article)"><ion-icon [name]="article.read ? 'mail-unread-outline' : 'mail-open-outline'"></ion-icon></ion-button><ion-button fill="clear" size="small" [attr.aria-label]="article.starred ? 'Unstar' : 'Star'" (click)="quick($event); toggleStar(article)"><ion-icon [color]="article.starred ? 'warning' : 'medium'" [name]="article.starred ? 'star' : 'star-outline'"></ion-icon></ion-button></div>
           </ion-card>
         </ion-col>
@@ -33,9 +36,9 @@
 
       <div class="cards" *ngIf="visible().length && prefs.listMode()==='card'">
         <ion-card button [routerLink]="['/article', article.id]" [class.unread]="!article.read" *ngFor="let article of visible(); trackBy: track">
-          <img *ngIf="article.image" [src]="article.image" alt="" loading="lazy">
-          <ion-card-header><ion-card-title>{{article.title}}</ion-card-title><ion-card-subtitle>{{article.author}} · {{article.publishedAt | date:'medium'}}</ion-card-subtitle></ion-card-header>
-          <ion-card-content><p class="snippet">{{article.content}}</p></ion-card-content>
+          <img *ngIf="article.image" [src]="article.image" alt="" loading="lazy" (error)="hideBrokenImage($event)">
+          <ion-card-header><ion-card-title>{{cleanTitle(article)}}</ion-card-title><ion-card-subtitle *ngIf="meta(article)">{{meta(article)}}</ion-card-subtitle></ion-card-header>
+          <ion-card-content *ngIf="preview(article)"><p class="snippet">{{preview(article)}}</p></ion-card-content>
           <div class="quick"><ion-button fill="clear" size="small" (click)="quick($event); toggleRead(article)">{{article.read ? 'Keep unread' : 'Mark read'}}</ion-button><ion-button fill="clear" size="small" (click)="quick($event); toggleStar(article)"><ion-icon slot="start" [color]="article.starred ? 'warning' : 'medium'" [name]="article.starred ? 'star' : 'star-outline'"></ion-icon>{{article.starred ? 'Unstar' : 'Star'}}</ion-button></div>
         </ion-card>
       </div>

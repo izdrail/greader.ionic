@@ -46,5 +46,8 @@ export async function resolvePublic(url, lookup = dns.lookup) {
 }
 
 export function allowedContentType(value = '') {
-  return /(^|\/|\+)(xml|rss|atom)($|;)|^text\/plain(?:;|$)|^application\/octet-stream(?:;|$)/i.test(value);
+  // text/html is allowed so a pasted website URL can be scanned for its feed
+  // links (the native HTTP path imposes no content-type gate at all); the SSRF
+  // policy and size cap still bound what comes back.
+  return /(^|\/|\+)(xml|rss|atom|html)($|;)|^text\/(plain|html)(?:;|$)|^application\/octet-stream(?:;|$)/i.test(value);
 }
