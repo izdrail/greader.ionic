@@ -24,7 +24,7 @@ describe('buildDiagnosticsReport', () => {
 describe('feedbackMailto', () => {
   it('builds an encoded mailto with the version footer', () => {
     const url = feedbackMailto('dev@example.com', '1.2.3');
-    expect(url.startsWith('mailto:dev@example.com?subject=gReader%20feedback')).toBe(true);
+    expect(url.startsWith('mailto:dev@example.com?subject=gReader%20News%20feedback')).toBe(true);
     expect(decodeURIComponent(url)).toContain('App version: 1.2.3');
   });
 });

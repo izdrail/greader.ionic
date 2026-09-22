@@ -101,7 +101,7 @@ export class TtsService {
   private updateMediaSession(article: Article): void {
     if (!('mediaSession' in navigator)) return;
     try {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: article.title, artist: article.author ?? 'gReader' });
+      navigator.mediaSession.metadata = new MediaMetadata({ title: article.title, artist: article.author ?? 'gReader News' });
       navigator.mediaSession.setActionHandler('play', () => this.togglePause());
       navigator.mediaSession.setActionHandler('pause', () => this.togglePause());
       navigator.mediaSession.setActionHandler('nexttrack', () => this.next());

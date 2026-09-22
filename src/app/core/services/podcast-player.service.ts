@@ -128,7 +128,7 @@ export class PodcastPlayerService {
   private updateMediaSession(track: PodcastTrack): void {
     if (!('mediaSession' in navigator)) return;
     try {
-      navigator.mediaSession.metadata = new MediaMetadata({ title: track.title, artist: track.author ?? 'gReader' });
+      navigator.mediaSession.metadata = new MediaMetadata({ title: track.title, artist: track.author ?? 'gReader News' });
       navigator.mediaSession.setActionHandler('play', () => this.toggle());
       navigator.mediaSession.setActionHandler('pause', () => this.toggle());
       navigator.mediaSession.setActionHandler('nexttrack', () => void this.next());

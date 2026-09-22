@@ -21,7 +21,7 @@ export class NotificationsService {
       await LocalNotifications.schedule({
         notifications: [{
           id: this.id++,
-          title: 'gReader sync complete',
+          title: 'gReader News sync complete',
           body: `${newArticles} new article${newArticles === 1 ? '' : 's'} ready to read`,
         }],
       });

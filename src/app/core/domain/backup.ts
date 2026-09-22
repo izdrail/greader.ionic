@@ -22,7 +22,7 @@ export function buildBackup(values: Record<string, string | null>, now: number):
 export function parseBackup(json: string): Record<string, string> {
   let doc: unknown;
   try { doc = JSON.parse(json); } catch { throw new Error('This file is not valid JSON'); }
-  if (typeof doc !== 'object' || doc === null) throw new Error('This file is not a gReader backup');
+  if (typeof doc !== 'object' || doc === null) throw new Error('This file is not a gReader News backup');
   const { version, settings } = doc as Partial<BackupDocument>;
   if (version !== BACKUP_VERSION) throw new Error(`Unsupported backup version: ${String(version)}`);
   if (typeof settings !== 'object' || settings === null) throw new Error('This backup has no settings');

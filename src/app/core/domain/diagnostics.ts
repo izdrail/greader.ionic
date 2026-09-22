@@ -14,7 +14,7 @@ export interface DiagnosticsInput {
 /** Plain-text diagnostic report for the "send log" support action. */
 export function buildDiagnosticsReport(input: DiagnosticsInput, now: number): string {
   const lines = [
-    'gReader diagnostic report',
+    'gReader News diagnostic report',
     `Generated: ${new Date(now).toISOString()}`,
     '',
     `App version: ${input.appVersion}`,
@@ -34,7 +34,7 @@ export function buildDiagnosticsReport(input: DiagnosticsInput, now: number): st
 
 /** Support email subject/body for feedback; keeps the body short enough for a mailto. */
 export function feedbackMailto(address: string, appVersion: string): string {
-  const subject = encodeURIComponent('gReader feedback');
+  const subject = encodeURIComponent('gReader News feedback');
   const body = encodeURIComponent(`\n\n\n---\nApp version: ${appVersion}`);
   return `mailto:${address}?subject=${subject}&body=${body}`;
 }

@@ -11,7 +11,7 @@ export class OpmlExportService {
   readonly filename = 'greader-subscriptions.opml';
 
   build(subscriptions: Subscription[], now = Date.now()): string {
-    return buildOpml(subscriptions, 'gReader subscriptions', now);
+    return buildOpml(subscriptions, 'gReader News subscriptions', now);
   }
 
   async export(subscriptions: Subscription[]): Promise<'shared' | 'downloaded'> {

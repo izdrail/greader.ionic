@@ -19,7 +19,7 @@ describe('buildBackup + parseBackup round trip', () => {
 describe('parseBackup', () => {
   it('rejects invalid input with a readable message', () => {
     expect(() => parseBackup('nope')).toThrow('not valid JSON');
-    expect(() => parseBackup('42')).toThrow('not a gReader backup');
+    expect(() => parseBackup('42')).toThrow('not a gReader News backup');
     expect(() => parseBackup('{"version":99,"settings":{}}')).toThrow('Unsupported backup version');
     expect(() => parseBackup('{"version":1}')).toThrow('no settings');
   });
