@@ -4,7 +4,7 @@ android {
     namespace = "com.izdrail.greader"
     compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.izdrail.greader"
+        applicationId "app.greaderapp.com"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

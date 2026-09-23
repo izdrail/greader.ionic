@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">gReader News</string>
     <string name="title_activity_main">gReader News</string>
-    <string name="package_name">com.izdrail.greader</string>
-    <string name="custom_url_scheme">com.izdrail.greader</string>
+    <string name="package_name">app.greaderapp.com</string>
+    <string name="custom_url_scheme">app.greaderapp.com</string>
     <string name="widget_unread_label">unread articles</string>
 </resources>

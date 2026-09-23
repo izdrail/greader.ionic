@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.izdrail.greader',
+  appId: 'app.greaderapp.com',
   appName: 'gReader News',
   webDir: 'www',
   plugins: { CapacitorHttp: { enabled: true } }
