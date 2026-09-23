@@ -22,8 +22,8 @@ export class ArticleActionsService {
   }
 
   /** Mark articles read, limited by an age option from MARK_READ_AGES. Returns the number updated. */
-  async markAllRead(accountId: string, ageId: string): Promise<number> {
-    return this.db.markArticlesRead(accountId, { before: markReadCutoff(ageId, Date.now()) });
+  async markAllRead(accountId: string, ageId: string, subscriptionId?: string): Promise<number> {
+    return this.db.markArticlesRead(accountId, { before: markReadCutoff(ageId, Date.now()), ...(subscriptionId ? { subscriptionId } : {}) });
   }
 
   private enqueue(article: Article, kind: 'read' | 'star', value: boolean): Promise<void> {

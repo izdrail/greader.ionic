@@ -51,12 +51,22 @@ describe('ArticleActionsService', () => {
 
   it('delegates mark-all with the resolved age cutoff', async () => {
     const db = storage();
-    const calls: { before?: number }[] = [];
-    db.markArticlesRead = async (_a: string, o: { before?: number }) => { calls.push(o); return 3; };
+    const calls: { before?: number; subscriptionId?: string }[] = [];
+    db.markArticlesRead = async (_a: string, o: { before?: number; subscriptionId?: string }) => { calls.push(o); return 3; };
     const service = new ArticleActionsService(db);
     expect(await service.markAllRead('a', 'all')).toBe(3);
     expect(await service.markAllRead('a', 'week')).toBe(3);
     expect(calls[0].before).toBeUndefined();
     expect(calls[1].before).toBeLessThan(Date.now());
+    expect(calls[0].subscriptionId).toBeUndefined();
+  });
+
+  it('scopes mark-all-read to one feed when a subscription is selected', async () => {
+    const calls: { before?: number; subscriptionId?: string }[] = [];
+    const db = storage();
+    db.markArticlesRead = async (_a: string, o: { before?: number; subscriptionId?: string }) => { calls.push(o); return 2; };
+    const service = new ArticleActionsService(db);
+    expect(await service.markAllRead('a', 'all', 'sub-tnw')).toBe(2);
+    expect(calls[0].subscriptionId).toBe('sub-tnw');
   });
 });

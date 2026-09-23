@@ -10,3 +10,9 @@ ion-item.in-folder{--padding-start:2.75rem}
 ion-item ion-label h2,ion-card-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;overflow-wrap:anywhere}
 .empty.state ion-spinner{width:48px;height:48px}
 .state-icon{font-size:3rem;color:var(--ion-color-medium);margin-bottom:.5rem}
+
+ion-menu ion-item.selected {
+  --background: var(--ion-color-primary-tint, rgba(56, 128, 255, 0.12));
+  --color: var(--ion-color-primary-contrast, inherit);
+  font-weight: 600;
+}

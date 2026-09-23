@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal } from '@angular/core'; import { CommonModule, DatePipe } from '@angular/common'; import { ActivatedRoute, RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
+import { Component, computed, OnInit, signal, ViewChild } from '@angular/core'; import { CommonModule, DatePipe } from '@angular/common'; import { ActivatedRoute, Router, RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
 import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonChip,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonItem,IonItemOption,IonItemOptions,IonItemSliding,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonNote,IonFooter,IonRange,IonRefresher,IonRefresherContent,IonRow,IonSearchbar,IonSegment,IonSegmentButton,IonSpinner,IonSplitPane,IonTitle,IonToolbar, ToastController } from '@ionic/angular';
 import { addIcons } from 'ionicons'; import { addOutline,browsersOutline,checkmarkDoneOutline,chevronDownOutline,chevronForwardOutline,closeOutline,cloudOfflineOutline,downloadOutline,folderOutline,gridOutline,listOutline,mailOpenOutline,mailUnreadOutline,menuOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,refreshOutline,settingsOutline,star,starOutline,volumeHighOutline } from 'ionicons/icons';
 import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings'; import { PodcastPlayerService } from '../../core/services/podcast-player.service'; import { NativeBridgeService } from '../../core/services/native-bridge.service'; import { AdsService } from '../../core/services/ads.service'; import { formatTime, PLAYBACK_RATES } from '../../core/domain/podcast-player';
@@ -8,13 +8,14 @@ const MODE_ICONS: Record<string,string> = { list: 'grid-outline', grid: 'browser
 
 @Component({selector:'app-shell',templateUrl:'shell.page.html',styleUrls:['shell.page.scss'],imports:[CommonModule,FormsModule,RouterLink,IonSplitPane,IonMenu,IonHeader,IonToolbar,IonTitle,IonContent,IonList,IonItem,IonItemSliding,IonItemOptions,IonItemOption,IonLabel,IonBadge,IonNote,IonMenuToggle,IonButtons,IonMenuButton,IonButton,IonIcon,IonSearchbar,IonSegment,IonSegmentButton,IonRefresher,IonRefresherContent,IonFooter,IonRange,IonGrid,IonRow,IonCol,IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent,IonChip,IonSpinner],providers:[DatePipe]})
 export class ShellPage implements OnInit {
+  @ViewChild('articleList') articleList?:IonContent;
   accounts=signal<Account[]>([]);subscriptions=signal<Subscription[]>([]);folders=signal<Tag[]>([]);articles=signal<Article[]>([]);loading=signal(true);loadError=signal(false);query=signal('');filter=signal<'all'|'unread'|'starred'>('all');selectedSub=signal<string|undefined>(undefined);collapsed=signal<ReadonlySet<string>>(new Set());
   selectedSubTitle=computed(()=>this.subscriptions().find(s=>s.id===this.selectedSub())?.title);
   visible=computed(()=>this.articles().filter(x=>(!this.selectedSub()||x.subscriptionId===this.selectedSub())&&(this.filter()==='all'||this.filter()==='unread'&&!x.read||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
   foldered=computed(()=>groupByFolder(this.subscriptions(),this.folders(),this.prefs.feedSort()));
   nextModeIcon=computed(()=>MODE_ICONS[this.prefs.listMode()]);
 
-  constructor(private db:StoragePort,private route:ActivatedRoute,private bridge:NativeBridgeService,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService,private ads:AdsService,private datePipe:DatePipe){
+  constructor(private db:StoragePort,private route:ActivatedRoute,private router:Router,private bridge:NativeBridgeService,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService,private ads:AdsService,private datePipe:DatePipe){
     addIcons({menuOutline,refreshOutline,settingsOutline,listOutline,gridOutline,browsersOutline,downloadOutline,volumeHighOutline,star,starOutline,cloudOfflineOutline,addOutline,checkmarkDoneOutline,mailOpenOutline,mailUnreadOutline,folderOutline,chevronDownOutline,chevronForwardOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,closeOutline});
   }
 
@@ -74,7 +75,8 @@ export class ShellPage implements OnInit {
 
   async confirmMarkAll(){
     const account=this.accounts()[0];if(!account)return;
-    const alert=await this.alerts.create({header:'Mark articles as read',inputs:MARK_READ_AGES.map((age,i)=>({type:'radio',label:age.label,value:age.id,checked:i===0})),buttons:[{text:'Cancel',role:'cancel'},{text:'Mark read',handler:async ageId=>{const count=await this.actions.markAllRead(account.id,ageId);await this.load();const toast=await this.toasts.create({message:`Marked ${count} article${count===1?'':'s'} as read`,duration:2000,position:'bottom'});await toast.present();}}]});
+    const sub=this.selectedSub();const subTitle=this.selectedSubTitle();
+    const alert=await this.alerts.create({header:subTitle?`Mark ${subTitle} as read`:'Mark articles as read',inputs:MARK_READ_AGES.map((age,i)=>({type:'radio',label:age.label,value:age.id,checked:i===0})),buttons:[{text:'Cancel',role:'cancel'},{text:'Mark read',handler:async ageId=>{const count=await this.actions.markAllRead(account.id,ageId,sub);await this.load();const toast=await this.toasts.create({message:`Marked ${count} article${count===1?'':'s'} as read`,duration:2000,position:'bottom'});await toast.present();}}]});
     await alert.present();
   }
 
@@ -92,6 +94,8 @@ export class ShellPage implements OnInit {
   fmt=formatTime;
   async cycleRate(){const i=PLAYBACK_RATES.indexOf(this.player.rate());await this.player.setRate(PLAYBACK_RATES[(i+1)%PLAYBACK_RATES.length]);}
   quick(e:Event){e.preventDefault();e.stopPropagation();}
-  clearFeedFilter(){this.selectedSub.set(undefined);}
+  selectFeed(id:string){this.selectedSub.set(id);this.syncFeedParam(id);void this.articleList?.scrollToTop(200);}
+  clearFeedFilter(){this.selectedSub.set(undefined);this.syncFeedParam(undefined);void this.articleList?.scrollToTop(200);}
+  private syncFeedParam(sub:string|undefined){void this.router.navigate([],{relativeTo:this.route,queryParams:{sub:sub??null},queryParamsHandling:'merge',replaceUrl:true});}
   track(_:number,x:{id:string}){return x.id;}
 }
