@@ -13,7 +13,7 @@
     <ion-content><ion-refresher slot="fixed" (ionRefresh)="refresh($event)"><ion-refresher-content></ion-refresher-content></ion-refresher>
       <div class="empty state" *ngIf="loading()"><ion-spinner name="crescent"></ion-spinner><h2>Loading articles</h2><p>Your reading list is on its way.</p></div>
       <div class="empty state" *ngIf="!loading()&&loadError()"><ion-icon class="state-icon" name="cloud-offline-outline"></ion-icon><h2>Articles could not be loaded</h2><p>Check your connection and try again.</p><ion-button (click)="retryLoad()"><ion-icon name="refresh-outline" slot="start"></ion-icon>Retry</ion-button></div>
-      <div class="empty" *ngIf="!loading()&&!loadError()&&!articles().length"><img src="assets/icon/favicon.png" alt=""><h2>Your reading list is empty</h2><p>Add a local RSS feed or connect a provider. Articles will remain available offline after syncing.</p><ion-button routerLink="/subscribe">Add a feed</ion-button></div>
+      <div class="empty" *ngIf="!loading()&&!loadError()&&!articles().length"><img src="assets/logo/logo.png" alt=""><h2>Your reading list is empty</h2><p>Add a local RSS feed or connect a provider. Articles will remain available offline after syncing.</p><ion-button routerLink="/subscribe">Add a feed</ion-button></div>
       <div class="empty state" *ngIf="!loading()&&!loadError()&&articles().length&&!visible().length"><h2>No articles match</h2><p>Try a different search term, filter or feed.</p></div>
 
       <ion-list *ngIf="visible().length && prefs.listMode()==='list'">

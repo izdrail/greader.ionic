@@ -36,7 +36,7 @@ export class ShellPage implements OnInit {
       await this.load();
       await this.notifications.notifySyncResult(outcome.newArticles,{notify:settings.notifyAfterSync,vibrate:settings.vibrate});
       await this.notifications.notifyFeedAlerts(outcome.feedAlerts,{notify:settings.notifyAfterSync});
-    }catch{/* offline or provider error; the sync service records lastError */}
+    }catch(error){const toast=await this.toasts.create({message:error instanceof Error?`Sync failed: ${error.message}`:'Sync failed. Check your connection and try again.',duration:4000,position:'bottom',color:'danger'});await toast.present();}
   }
 
   async load(){

@@ -34,3 +34,27 @@ describe('absolutizeUrls', () => {
     expect(out).toContain('href="https://x.test/a"');
   });
 });
+
+describe('extractMainContent cleanup', () => {
+  it('removes common clutter and inline event handlers', () => {
+    const out = extractMainContent(`<main><div class="article-body"><p onclick="steal()">${'Useful sentence. '.repeat(30)}</p><div class="newsletter">Sign up</div><div class="related">More stories</div></div></main>`);
+    expect(out).toContain('Useful sentence.');
+    expect(out).not.toContain('Sign up');
+    expect(out).not.toContain('More stories');
+    expect(out).not.toContain('onclick');
+  });
+
+  it('prefers article copy over a link-heavy container', () => {
+    const links = '<a href="#">menu item</a>'.repeat(80);
+    const copy = `<div class="story-body"><p>${'Full report sentence. '.repeat(45)}</p></div>`;
+    expect(extractMainContent(`<body><div>${links}</div>${copy}</body>`)).toContain('Full report sentence.');
+  });
+});
+
+describe('absolutizeUrls lazy images', () => {
+  it('promotes lazy image URLs and adds loading hints', () => {
+    const out = absolutizeUrls('<img data-src="/hero.jpg">', 'https://example.com/story');
+    expect(out).toContain('src="https://example.com/hero.jpg"');
+    expect(out).toContain('loading="lazy"');
+  });
+});

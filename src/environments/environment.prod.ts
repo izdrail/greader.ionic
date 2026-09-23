@@ -1,1 +1,1 @@
-export const environment = { production: true, feedProxyUrl: '/api/feed', podcastProxyUrl: '/api/podcasts' };
+export const environment = { production: true, feedProxyUrl: '/api/feed', podcastProxyUrl: '/api/podcasts', recommendationsProxyUrl: '/api/recommendations' };
