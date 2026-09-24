@@ -18,7 +18,7 @@ export class ShellPage implements OnInit {
   accounts=signal<Account[]>([]);subscriptions=signal<Subscription[]>([]);folders=signal<Tag[]>([]);articles=signal<Article[]>([]);loading=signal(true);loadError=signal(false);query=signal('');filter=signal<'all'|'unread'|'starred'>('all');selectedSub=signal<string|undefined>(undefined);collapsed=signal<ReadonlySet<string>>(new Set());
   selectedSubTitle=computed(()=>this.subscriptions().find(s=>s.id===this.selectedSub())?.title);
   visible=computed(()=>this.articles().filter(x=>(!this.selectedSub()||x.subscriptionId===this.selectedSub())&&(this.filter()==='all'||this.filter()==='unread'&&(!x.read||this.keptVisible().has(x.id))||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
-  foldered=computed(()=>groupByFolder(this.subscriptions(),this.folders(),this.prefs.feedSort()));
+  foldered=computed(()=>groupByFolder(this.subscriptions().filter(s=>!s.hidden),this.folders(),this.prefs.feedSort()));
   nextModeIcon=computed(()=>MODE_ICONS[this.prefs.listMode()]);
 
   constructor(private db:StoragePort,private route:ActivatedRoute,private router:Router,private bridge:NativeBridgeService,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,public appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService,private ads:AdsService,private datePipe:DatePipe){

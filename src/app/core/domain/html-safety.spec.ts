@@ -51,5 +51,7 @@ describe('shouldAutoloadReading', () => {
     expect(shouldAutoloadReading(true, 2, false)).toBe(false);
     expect(shouldAutoloadReading(true, -1, false)).toBe(true);
     expect(shouldAutoloadReading(false, undefined, true)).toBe(false);
+    expect(shouldAutoloadReading(false, -1, false, 1)).toBe(true);
+    expect(shouldAutoloadReading(false, -1, false, 0)).toBe(false);
   });
 });

@@ -99,7 +99,7 @@ export class ArticlePage implements OnInit {
     try {
       const sub = (await this.db.listSubscriptions(a.accountId)).find(s => s.id === a.subscriptionId);
       const onWifi = sub?.autoReadability === 2 ? (await Network.getStatus()).connectionType === 'wifi' : false;
-      return shouldAutoloadReading(this.appSettings.settings().autoloadReading, sub?.autoReadability, onWifi);
+      return shouldAutoloadReading(this.appSettings.settings().autoloadReading, sub?.autoReadability, onWifi, sub?.displayContent);
     } catch { return false; }
   }
 

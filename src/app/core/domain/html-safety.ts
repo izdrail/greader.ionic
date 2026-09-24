@@ -53,7 +53,8 @@ export function contentHasImage(html: string | undefined, src: string | undefine
  * Whether to open an article straight in Reading mode. Per-feed "Auto readability" wins
  * (0 off, 1 on, 2 on Wi-Fi only); -1 defers to the global "Autoload reading mode" setting.
  */
-export function shouldAutoloadReading(globalSetting: boolean, feedSetting: number | undefined, onWifi: boolean): boolean {
+export function shouldAutoloadReading(globalSetting: boolean, feedSetting: number | undefined, onWifi: boolean, displayContent?: number): boolean {
+  if (displayContent === 1) return true; // per-feed "Display content: Full content"
   if (feedSetting === 1) return true;
   if (feedSetting === 0) return false;
   if (feedSetting === 2) return onWifi;
