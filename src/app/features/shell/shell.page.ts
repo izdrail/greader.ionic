@@ -3,6 +3,7 @@ import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,I
 import { addIcons } from 'ionicons'; import { addOutline,browsersOutline,checkmarkDoneOutline,chevronDownOutline,chevronForwardOutline,closeOutline,cloudOfflineOutline,downloadOutline,folderOutline,gridOutline,listOutline,mailOpenOutline,mailUnreadOutline,menuOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,refreshOutline,settingsOutline,star,starOutline,volumeHighOutline } from 'ionicons/icons';
 import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings'; import { PodcastPlayerService } from '../../core/services/podcast-player.service'; import { NativeBridgeService } from '../../core/services/native-bridge.service'; import { AdsService } from '../../core/services/ads.service'; import { formatTime, PLAYBACK_RATES } from '../../core/domain/podcast-player';
 import { htmlToText, snippet } from '../../core/domain/text-preview';
+import { mergeArticlePages } from '../../core/domain/feed-refresh';
 
 const MODE_ICONS: Record<string,string> = { list: 'grid-outline', grid: 'browsers-outline', card: 'list-outline' };
 
@@ -44,10 +45,10 @@ export class ShellPage implements OnInit {
     try{
     const a=await this.db.listAccounts();this.accounts.set(a);
     if(a[0]){
-      const [subs,articles,tags]=await Promise.all([this.db.listSubscriptions(a[0].id),this.db.listArticles(a[0].id),this.db.listTags(a[0].id)]);
+      const [subs,recent,unreadRecent,starred,unread,tags]=await Promise.all([this.db.listSubscriptions(a[0].id),this.db.listArticles(a[0].id),this.db.listArticles(a[0].id,{unreadOnly:true}),this.db.listStarred(a[0].id),this.db.unreadCounts(a[0].id),this.db.listTags(a[0].id)]);
       this.folders.set(tags.filter(t=>t.type==='folder'));
-      this.articles.set(articles);
-      const unread=new Map<string,number>(); for(const article of articles) if(!article.read) unread.set(article.subscriptionId,(unread.get(article.subscriptionId)??0)+1);
+      // The newest page alone would hide older starred or unread articles from the Starred/Unread filters.
+      this.articles.set(mergeArticlePages(recent,unreadRecent,starred));
       const counted=subs.map(s=>({...s,unreadCount:unread.get(s.id)??0}));
       if(counted.some((s,i)=>s.unreadCount!==subs[i].unreadCount)) await this.db.putSubscriptions(counted);
       this.subscriptions.set(counted);

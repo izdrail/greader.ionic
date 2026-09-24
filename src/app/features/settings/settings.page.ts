@@ -25,7 +25,7 @@ export class SettingsPage implements OnInit{options:ThemeId[]=['default','green'
   async sendLog(){
     const account=(await this.db.listAccounts())[0];
     let subscriptionCount=0,articles:Awaited<ReturnType<StoragePort['listArticles']>>=[];
-    if(account){const subs=await this.db.listSubscriptions(account.id);subscriptionCount=subs.length;articles=await this.db.listArticles(account.id);}
+    if(account){const subs=await this.db.listSubscriptions(account.id);subscriptionCount=subs.length;articles=await this.db.listArticles(account.id,{limit:Number.MAX_SAFE_INTEGER});}
     const report=buildDiagnosticsReport({appVersion:'0.0.1',platform:Capacitor.getPlatform(),userAgent:navigator.userAgent,accountProvider:account?.provider,accountLabel:account?.label,lastSyncAt:account?.lastSyncAt,lastSyncError:this.sync.lastError(),subscriptionCount,articleCount:articles.length,unreadCount:articles.filter(a=>!a.read).length},Date.now());
     if(Capacitor.isNativePlatform()){
       try{const file=await Filesystem.writeFile({path:'greader-diagnostics.txt',data:report,directory:Directory.Cache,encoding:Encoding.UTF8});await Share.share({title:'gReader diagnostic log',url:file.uri});return;}catch{/* fall through to download */}

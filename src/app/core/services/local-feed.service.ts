@@ -34,17 +34,36 @@ export class LocalFeedService {
   async importXml(accountId: string, xml: string, sourceUrl?: string): Promise<Subscription> {
     const parsed = this.parser.parse(xml);
     const id = this.stableId(accountId, sourceUrl || parsed.link || parsed.title);
+    const previous = (await this.storage.listSubscriptions(accountId)).find(s => s.id === id);
+    const candidates = new Map<string, Article>();
+    for (const item of parsed.items) {
+      const articleId = this.stableId(accountId, item.uid);
+      if (candidates.has(articleId)) continue;
+      candidates.set(articleId, {
+        id: articleId, accountId, subscriptionId: id, uid: item.uid, title: item.title,
+        content: item.content, author: item.author, link: item.link, image: item.image, audio: item.audio, video: item.video,
+        publishedAt: item.publishedAt, updatedAt: item.publishedAt, starred: false, cached: true, read: false, keepUnread: false,
+      });
+    }
+    // Re-adding a feed (or re-importing an OPML) must not reset read/starred state or the feed's own settings.
+    const stored = await this.storage.existingArticleIds([...candidates.keys()]);
+    const articles = [...candidates.values()].filter(a => !stored.has(a.id));
+    const newestItemAt = Math.max(0, ...parsed.items.map(x => x.publishedAt));
+    if (previous) {
+      const updated: Subscription = {
+        ...previous, title: parsed.title || previous.title, feedUrl: sourceUrl ?? previous.feedUrl,
+        htmlUrl: parsed.link ?? previous.htmlUrl, iconUrl: parsed.image ?? previous.iconUrl,
+        unreadCount: previous.unreadCount + articles.length, newestItemAt: Math.max(previous.newestItemAt ?? 0, newestItemAt),
+      };
+      await Promise.all([this.storage.putSubscriptions([updated]), this.storage.putArticles(articles)]);
+      return updated;
+    }
     const subscription: Subscription = {
       id, accountId, uid: sourceUrl || parsed.link || id, title: parsed.title, feedUrl: sourceUrl, htmlUrl: parsed.link,
-      iconUrl: parsed.image, sort: Date.now(), unreadCount: parsed.items.length, newestItemAt: Math.max(0, ...parsed.items.map(x => x.publishedAt)),
+      iconUrl: parsed.image, sort: Date.now(), unreadCount: articles.length, newestItemAt,
       syncExcluded: false, hidden: false, notification: false, imageFit: true, javascript: true,
       offlineContent: -1, displayContent: -1, linkFormat: -1, autoReadability: -1, userAgent: -1,
     };
-    const articles: Article[] = parsed.items.map(item => ({
-      id: this.stableId(accountId, item.uid), accountId, subscriptionId: id, uid: item.uid, title: item.title,
-      content: item.content, author: item.author, link: item.link, image: item.image, audio: item.audio, video: item.video,
-      publishedAt: item.publishedAt, updatedAt: item.publishedAt, starred: false, cached: true, read: false, keepUnread: false,
-    }));
     await Promise.all([this.storage.putSubscriptions([subscription]), this.storage.putArticles(articles)]);
     return subscription;
   }

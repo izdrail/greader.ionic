@@ -24,3 +24,10 @@ export function stableId(scope: string, value: string): string {
   for (const char of value) hash = Math.imul(hash ^ char.charCodeAt(0), 16777619);
   return `${scope}:${(hash >>> 0).toString(36)}`;
 }
+
+/** Union of article pages by id, newest first - keeps the list page plus any older starred/unread articles. */
+export function mergeArticlePages(...pages: Article[][]): Article[] {
+  const byId = new Map<string, Article>();
+  for (const page of pages) for (const article of page) if (!byId.has(article.id)) byId.set(article.id, article);
+  return [...byId.values()].sort((a, b) => b.publishedAt - a.publishedAt);
+}
