@@ -58,3 +58,21 @@ export function reorderedWithSort(subscriptions: Subscription[], from: number, t
   copy.splice(to, 0, moved);
   return copy.map((sub, index) => ({ ...sub, sort: index }));
 }
+
+/**
+ * "Mark read on scroll": ids of rows whose bottom edge has scrolled above the top of the list
+ * viewport. Rows marked "keep unread" by the user are left alone, as are already-read ones.
+ */
+export function scrolledPastIds(
+  rows: { id: string; bottom: number }[],
+  viewportTop: number,
+  state: ReadonlyMap<string, { read: boolean; keepUnread: boolean }>,
+): string[] {
+  return rows
+    .filter((row) => row.bottom < viewportTop)
+    .filter((row) => {
+      const s = state.get(row.id);
+      return !!s && !s.read && !s.keepUnread;
+    })
+    .map((row) => row.id);
+}

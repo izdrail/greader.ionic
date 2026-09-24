@@ -1,7 +1,7 @@
-import { Component, computed, OnInit, signal, ViewChild } from '@angular/core'; import { CommonModule, DatePipe } from '@angular/common'; import { ActivatedRoute, Router, RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
+import { Component, computed, ElementRef, OnInit, signal, ViewChild } from '@angular/core'; import { CommonModule, DatePipe } from '@angular/common'; import { ActivatedRoute, Router, RouterLink } from '@angular/router'; import { FormsModule } from '@angular/forms';
 import { AlertController, IonBadge,IonButton,IonButtons,IonCard,IonCardContent,IonCardHeader,IonCardSubtitle,IonCardTitle,IonChip,IonCol,IonContent,IonGrid,IonHeader,IonIcon,IonItem,IonItemOption,IonItemOptions,IonItemSliding,IonLabel,IonList,IonMenu,IonMenuButton,IonMenuToggle,IonNote,IonFooter,IonRange,IonRefresher,IonRefresherContent,IonRow,IonSearchbar,IonSegment,IonSegmentButton,IonSpinner,IonSplitPane,IonTitle,IonToolbar, ToastController } from '@ionic/angular';
 import { addIcons } from 'ionicons'; import { addOutline,browsersOutline,checkmarkDoneOutline,chevronDownOutline,chevronForwardOutline,closeOutline,cloudOfflineOutline,downloadOutline,folderOutline,gridOutline,listOutline,mailOpenOutline,mailUnreadOutline,menuOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,refreshOutline,settingsOutline,star,starOutline,volumeHighOutline } from 'ionicons/icons';
-import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings'; import { PodcastPlayerService } from '../../core/services/podcast-player.service'; import { NativeBridgeService } from '../../core/services/native-bridge.service'; import { AdsService } from '../../core/services/ads.service'; import { formatTime, PLAYBACK_RATES } from '../../core/domain/podcast-player';
+import { StoragePort } from '../../core/storage/storage.port'; import { Account,Article,Subscription,Tag } from '../../core/domain/models'; import { scrolledPastIds } from '../../core/domain/list-preferences'; import { ARTICLE_LIST_MODES, MARK_READ_AGES, sortSubscriptions } from '../../core/domain/list-preferences'; import { groupByFolder } from '../../core/domain/folders'; import { ListPreferencesService } from '../../core/services/list-preferences.service'; import { ArticleActionsService } from '../../core/services/article-actions.service'; import { ThemeService } from '../../core/theme/theme.service'; import { SyncService } from '../../core/services/sync.service'; import { AppSettingsService } from '../../core/services/app-settings.service'; import { NotificationsService } from '../../core/services/notifications.service'; import { isSyncDue } from '../../core/domain/app-settings'; import { PodcastPlayerService } from '../../core/services/podcast-player.service'; import { NativeBridgeService } from '../../core/services/native-bridge.service'; import { AdsService } from '../../core/services/ads.service'; import { formatTime, PLAYBACK_RATES } from '../../core/domain/podcast-player';
 import { htmlToText, snippet } from '../../core/domain/text-preview';
 import { mergeArticlePages } from '../../core/domain/feed-refresh';
 
@@ -10,20 +10,30 @@ const MODE_ICONS: Record<string,string> = { list: 'grid-outline', grid: 'browser
 @Component({selector:'app-shell',templateUrl:'shell.page.html',styleUrls:['shell.page.scss'],imports:[CommonModule,FormsModule,RouterLink,IonSplitPane,IonMenu,IonHeader,IonToolbar,IonTitle,IonContent,IonList,IonItem,IonItemSliding,IonItemOptions,IonItemOption,IonLabel,IonBadge,IonNote,IonMenuToggle,IonButtons,IonMenuButton,IonButton,IonIcon,IonSearchbar,IonSegment,IonSegmentButton,IonRefresher,IonRefresherContent,IonFooter,IonRange,IonGrid,IonRow,IonCol,IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent,IonChip,IonSpinner],providers:[DatePipe]})
 export class ShellPage implements OnInit {
   @ViewChild('articleList') articleList?:IonContent;
+  @ViewChild('articleList',{read:ElementRef}) articleListEl?:ElementRef<HTMLElement>;
+  /** Articles marked read by scrolling stay in the Unread view until the next reload, so the list doesn't jump under the finger. */
+  keptVisible=signal<ReadonlySet<string>>(new Set());
+  private initialised=false;
+  private scrollPending=false;
   accounts=signal<Account[]>([]);subscriptions=signal<Subscription[]>([]);folders=signal<Tag[]>([]);articles=signal<Article[]>([]);loading=signal(true);loadError=signal(false);query=signal('');filter=signal<'all'|'unread'|'starred'>('all');selectedSub=signal<string|undefined>(undefined);collapsed=signal<ReadonlySet<string>>(new Set());
   selectedSubTitle=computed(()=>this.subscriptions().find(s=>s.id===this.selectedSub())?.title);
-  visible=computed(()=>this.articles().filter(x=>(!this.selectedSub()||x.subscriptionId===this.selectedSub())&&(this.filter()==='all'||this.filter()==='unread'&&!x.read||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
+  visible=computed(()=>this.articles().filter(x=>(!this.selectedSub()||x.subscriptionId===this.selectedSub())&&(this.filter()==='all'||this.filter()==='unread'&&(!x.read||this.keptVisible().has(x.id))||this.filter()==='starred'&&x.starred)&&(!this.query()||`${x.title} ${x.author??''}`.toLowerCase().includes(this.query().toLowerCase()))));
   foldered=computed(()=>groupByFolder(this.subscriptions(),this.folders(),this.prefs.feedSort()));
   nextModeIcon=computed(()=>MODE_ICONS[this.prefs.listMode()]);
 
-  constructor(private db:StoragePort,private route:ActivatedRoute,private router:Router,private bridge:NativeBridgeService,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,private appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService,private ads:AdsService,private datePipe:DatePipe){
+  constructor(private db:StoragePort,private route:ActivatedRoute,private router:Router,private bridge:NativeBridgeService,private themes:ThemeService,private actions:ArticleActionsService,private alerts:AlertController,private toasts:ToastController,public prefs:ListPreferencesService,private sync:SyncService,public appSettings:AppSettingsService,private notifications:NotificationsService,public player:PodcastPlayerService,private ads:AdsService,private datePipe:DatePipe){
     addIcons({menuOutline,refreshOutline,settingsOutline,listOutline,gridOutline,browsersOutline,downloadOutline,volumeHighOutline,star,starOutline,cloudOfflineOutline,addOutline,checkmarkDoneOutline,mailOpenOutline,mailUnreadOutline,folderOutline,chevronDownOutline,chevronForwardOutline,pauseOutline,playOutline,playBackOutline,playForwardOutline,playSkipForwardOutline,closeOutline});
   }
 
-  async ngOnInit(){const sub=this.route.snapshot.queryParamMap.get('sub');if(sub)this.selectedSub.set(sub);await this.themes.init();await Promise.all([this.prefs.init(),this.appSettings.init(),this.player.init()]);await this.load();await this.syncIfNeeded();}
+  async ngOnInit(){const sub=this.route.snapshot.queryParamMap.get('sub');if(sub)this.selectedSub.set(sub);await this.themes.init();await Promise.all([this.prefs.init(),this.appSettings.init(),this.player.init()]);await this.load();this.initialised=true;await this.syncIfNeeded();}
 
   /** The article list carries the AdMob banner; it shows while this view is active and hides everywhere else. */
-  async ionViewWillEnter(){await this.ads.showBanner();}
+  async ionViewWillEnter(){
+    // Ionic keeps this page alive while an article or the subscribe page is open; reload so read
+    // state, unread badges and newly added feeds are current when coming back.
+    if(this.initialised) await this.load();
+    await this.ads.showBanner();
+  }
 
   async ionViewWillLeave(){await this.ads.hideBanner();}
 
@@ -42,6 +52,7 @@ export class ShellPage implements OnInit {
   }
 
   async load(){
+    this.keptVisible.set(new Set());
     try{
     const a=await this.db.listAccounts();this.accounts.set(a);
     if(a[0]){
@@ -70,7 +81,31 @@ export class ShellPage implements OnInit {
 
   async toggleRead(article:Article){this.patch(await this.actions.setRead(article,!article.read));}
   async toggleStar(article:Article){this.patch(await this.actions.setStarred(article,!article.starred));}
-  private patch(updated:Article){this.articles.update(list=>list.map(x=>x.id===updated.id?updated:x));}
+  private patch(updated:Article){
+    const before=this.articles().find(x=>x.id===updated.id);
+    this.articles.update(list=>list.map(x=>x.id===updated.id?updated:x));
+    if(before&&before.read!==updated.read) this.adjustUnread(updated.subscriptionId,updated.read?-1:1);
+  }
+  /** Keep sidebar badges and the launcher badge in step with single-article read changes. */
+  private adjustUnread(subscriptionId:string,delta:number){
+    this.subscriptions.update(list=>list.map(s=>s.id===subscriptionId?{...s,unreadCount:Math.max(0,s.unreadCount+delta)}:s));
+    this.bridge.updateUnread(this.subscriptions().reduce((n,s)=>n+s.unreadCount,0));
+  }
+  onListScroll(){
+    if(this.scrollPending||!this.appSettings.settings().markReadOnScroll)return;
+    this.scrollPending=true;
+    setTimeout(()=>{this.scrollPending=false;void this.markScrolledPast();},300);
+  }
+  private async markScrolledPast(){
+    const host=this.articleListEl?.nativeElement; if(!host)return;
+    const top=host.getBoundingClientRect().top;
+    const rows=[...host.querySelectorAll<HTMLElement>('[data-article-id]')].map(el=>({id:el.dataset['articleId']!,bottom:el.getBoundingClientRect().bottom}));
+    const byId=new Map(this.articles().map(a=>[a.id,a] as const));
+    const ids=scrolledPastIds(rows,top,byId);
+    if(!ids.length)return;
+    this.keptVisible.update(set=>new Set([...set,...ids]));
+    for(const id of ids){const a=byId.get(id); if(a) this.patch(await this.actions.setRead(a,true));}
+  }
 
   async cycleListMode(){const order=ARTICLE_LIST_MODES.map(x=>x.id);const next=order[(order.indexOf(this.prefs.listMode())+1)%order.length];await this.prefs.setListMode(next);}
 

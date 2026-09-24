@@ -80,3 +80,17 @@ describe('reorderedWithSort', () => {
     expect(reorderedWithSort(shuffled, 0, 1).map(x => x.id)).toEqual(['b', 'a', 'c', 'd']);
   });
 });
+
+describe('scrolledPastIds', () => {
+  it('returns unread rows scrolled above the viewport, skipping keep-unread and read ones', async () => {
+    const { scrolledPastIds } = await import('./list-preferences');
+    const state = new Map([
+      ['a', { read: false, keepUnread: false }],
+      ['b', { read: true, keepUnread: false }],
+      ['c', { read: false, keepUnread: true }],
+      ['d', { read: false, keepUnread: false }],
+    ]);
+    const rows = [{ id: 'a', bottom: 10 }, { id: 'b', bottom: 20 }, { id: 'c', bottom: 30 }, { id: 'd', bottom: 200 }];
+    expect(scrolledPastIds(rows, 100, state)).toEqual(['a']);
+  });
+});
