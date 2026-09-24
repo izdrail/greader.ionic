@@ -79,6 +79,9 @@ export class WllamaLlmService extends LocalLLMService {
     if (!availability.available) throw new LlmError('unavailable', availability.reason ?? 'unavailable');
     const { Wllama, CacheManager } = await import('@wllama/wllama/esm/index.js');
     const wasm = new URL('assets/wllama/wllama.wasm', document.baseURI).href;
+    // wllama waits forever if its runtime can't be fetched; check it first so the user gets an error, not an endless spinner.
+    const runtimeOk = await fetch(wasm).then(r => { void r.body?.cancel(); return r.ok; }).catch(() => false);
+    if (!runtimeOk) { this.status.set('error'); throw new LlmError('download', 'wllama runtime unavailable'); }
     this.status.set(availability.downloaded ? 'loading' : 'downloading');
     this.progress.set(availability.downloaded ? null : 0);
     const progressCallback = ({ loaded, total }: { loaded: number; total: number }) => this.zone.run(() => {
