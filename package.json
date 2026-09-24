@@ -60,8 +60,13 @@
     "supertest": "7.2.2",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.61.0",
-    "vitest": "~4.0.18",
+    "vitest": "~4.1.11",
     "wrangler": "4.135.0"
   },
-  "description": "Modern offline-first Ionic migration of gReader"
+  "description": "Modern offline-first Ionic migration of gReader",
+  "overrides": {
+    "xcode": {
+      "uuid": "^11.1.1"
+    }
+  }
 }

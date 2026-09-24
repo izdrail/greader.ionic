@@ -6,3 +6,6 @@ ion-accordion-group{display:block;margin-top:1rem}.keywords{display:flex;flex-wr
 .already{display:flex;align-items:center;gap:.35rem;color:var(--ion-color-success-shade);margin:.5rem .25rem 0}
 .topic-search{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.5rem}.topic-search ion-searchbar{padding-inline:0}.section-help{color:var(--ion-color-medium);margin-top:-.35rem}.directory-title{margin-top:2rem}.feed-art{width:52px;height:52px;object-fit:cover;border-radius:10px;background:var(--ion-color-light)}
 @media(max-width:560px){.topic-search{grid-template-columns:1fr}.topic-search ion-button{margin-top:-.5rem}}
+
+/* Failed add: row stays marked and blocked so a rate-limited or broken feed is not imported. */
+.add-failed{display:flex;align-items:center;gap:.35rem;color:var(--ion-color-danger);margin:.35rem .25rem 0}
