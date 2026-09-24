@@ -66,3 +66,28 @@ describe('read/starred state survives refresh and re-import', () => {
     expect(mergeArticlePages([art('a', 3), art('b', 2)], [art('b', 2)], [art('z', 1), art('y', 5)]).map(x => x.id)).toEqual(['y', 'a', 'b', 'z']);
   });
 });
+
+describe('OPML import', () => {
+  it('files feeds into folders from the OPML, reusing an existing folder by name, and reports progress', async () => {
+    const storage = memoryStorage();
+    const tags: any[] = [{ id: 'existing', accountId: 'acc', type: 'folder', label: 'Tech', sort: 3 }];
+    storage.listTags = async () => tags;
+    storage.putTags = async (v: any[]) => { tags.push(...v); };
+    const parser = { parse: (xml: string) => ({ title: xml, link: undefined, items: [] }) } as any;
+    const httpByUrl = { get: async (url: string) => (url.includes('bad') ? { status: 404, body: '' } : { status: 200, body: url }) } as any;
+    const progress: string[] = [];
+    const opml = `<opml><body><outline text="tech"><outline xmlUrl="https://a.test/feed"/></outline><outline text="News"><outline xmlUrl="https://b.test/feed"/><outline xmlUrl="https://bad.test/feed"/></outline><outline xmlUrl="https://c.test/feed"/></body></opml>`;
+
+    const result = await new LocalFeedService(parser, storage, httpByUrl).importOpml('acc', opml, (d, t) => progress.push(`${d}/${t}`));
+
+    expect(result).toEqual({ imported: 3, failed: ['https://bad.test/feed'] });
+    const byUrl = new Map([...storage.subs.values()].map((s: Subscription) => [s.feedUrl, s.folderId]));
+    expect(byUrl.get('https://a.test/feed')).toBe('existing');
+    const news = tags.find(t => t.label === 'News');
+    expect(news).toBeTruthy();
+    expect(byUrl.get('https://b.test/feed')).toBe(news.id);
+    expect(byUrl.get('https://c.test/feed')).toBeUndefined();
+    expect(progress[0]).toBe('0/4');
+    expect(progress.at(-1)).toBe('4/4');
+  });
+});

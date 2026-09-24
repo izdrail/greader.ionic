@@ -32,3 +32,9 @@ function attr(tag: string, name: string): string | undefined {
   const match = tag.match(new RegExp(`${name}\\s*=\\s*"([^"]*)"`, 'i')) ?? tag.match(new RegExp(`${name}\\s*=\\s*'([^']*)'`, 'i'));
   return match?.[1];
 }
+
+/** Loose feed-URL identity for duplicate checks: scheme, "www.", case and trailing slashes don't count. */
+export function feedUrlKey(value: string | undefined): string {
+  if (!value) return '';
+  return value.trim().toLowerCase().replace(/^[a-z]+:\/\//, '').replace(/^www\./, '').replace(/\/+$/, '');
+}

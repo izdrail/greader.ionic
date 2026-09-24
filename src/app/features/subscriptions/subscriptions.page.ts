@@ -30,7 +30,7 @@ export class SubscriptionsPage implements OnInit{
     await alert.present();
   }
   async setFolder(sub:Subscription,folderId:string){const account=this.account();if(!account)return;const next=this.subscriptions().map(s=>s.id===sub.id?{...s,folderId:folderId||undefined}:s);this.subscriptions.set(next);await this.db.putSubscriptions(next.filter(s=>s.id===sub.id));}
-  async exportOpml(){await this.opml.export(sortSubscriptions(this.subscriptions(),'custom'));}
+  async exportOpml(){await this.opml.export(sortSubscriptions(this.subscriptions(),'custom'),this.folders());}
   async handleReorder(event:CustomEvent<ItemReorderEventDetail>){
     const next=reorderedWithSort(this.subscriptions(),event.detail.from,event.detail.to);
     this.subscriptions.set(next);

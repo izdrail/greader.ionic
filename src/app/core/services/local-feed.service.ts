@@ -5,6 +5,8 @@ import { StoragePort } from '../storage/storage.port';
 import { FeedHttpService } from './feed-http.service';
 import { stableId } from '../domain/feed-refresh';
 import { discoverFeedLinks } from '../domain/feed-discovery';
+import { parseOpml } from '../domain/opml';
+import { createFolder } from '../domain/folders';
 
 @Injectable({ providedIn: 'root' })
 export class LocalFeedService {
@@ -68,11 +70,42 @@ export class LocalFeedService {
     return subscription;
   }
 
-  async importOpml(accountId: string, xml: string): Promise<{ imported: number; failed: string[] }> {
-    const doc = new DOMParser().parseFromString(xml, 'text/xml');
-    const urls = [...doc.querySelectorAll('outline[xmlUrl]')].map(node => node.getAttribute('xmlUrl')).filter((x): x is string => !!x);
-    const failed: string[] = []; let imported = 0;
-    for (const url of urls) { try { await this.subscribe(accountId, url); imported++; } catch { failed.push(url); } }
+  /**
+   * Import an OPML file: feeds are fetched four at a time, folder outlines become folders (reusing
+   * an existing folder with the same name), and feeds already subscribed keep their own settings.
+   */
+  async importOpml(accountId: string, xml: string, onProgress?: (done: number, total: number) => void): Promise<{ imported: number; failed: string[] }> {
+    const entries = parseOpml(xml);
+    const failed: string[] = []; let imported = 0; let done = 0;
+    const tags = await this.storage.listTags(accountId);
+    const folders = new Map(tags.filter(t => t.type === 'folder').map(t => [t.label.toLowerCase(), t] as const));
+    let nextSort = tags.reduce((n, t) => Math.max(n, t.sort), 0) + 1;
+    const folderFor = async (label: string) => {
+      const key = label.toLowerCase();
+      let folder = folders.get(key);
+      if (!folder) {
+        folder = createFolder(accountId, label, nextSort++);
+        folders.set(key, folder);
+        await this.storage.putTags([folder]);
+      }
+      return folder;
+    };
+    onProgress?.(0, entries.length);
+    const queue = [...entries];
+    const worker = async () => {
+      for (let entry = queue.shift(); entry; entry = queue.shift()) {
+        try {
+          const sub = await this.subscribe(accountId, entry.url);
+          if (entry.folder && !sub.folderId) {
+            const folder = await folderFor(entry.folder);
+            await this.storage.putSubscriptions([{ ...sub, folderId: folder.id }]);
+          }
+          imported++;
+        } catch { failed.push(entry.url); }
+        onProgress?.(++done, entries.length);
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(4, entries.length) }, worker));
     return { imported, failed };
   }
 

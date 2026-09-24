@@ -29,3 +29,12 @@ describe('feed discovery', () => {
     expect(links.map(l => l.url)).toContain('https://example.com/rss.xml');
   });
 });
+
+describe('feedUrlKey', () => {
+  it('treats http/https, www, case and trailing slash as the same feed', async () => {
+    const { feedUrlKey } = await import('./feed-discovery');
+    expect(feedUrlKey('http://www.Example.com/feed/')).toBe(feedUrlKey('https://example.com/feed'));
+    expect(feedUrlKey('https://example.com/feed')).not.toBe(feedUrlKey('https://example.com/rss'));
+    expect(feedUrlKey(undefined)).toBe('');
+  });
+});
