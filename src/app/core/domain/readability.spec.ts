@@ -58,3 +58,33 @@ describe('absolutizeUrls lazy images', () => {
     expect(out).toContain('loading="lazy"');
   });
 });
+
+describe('extraction junk pruning', () => {
+  const para = (n: number) => `<p>${'Real article sentence, with commas, and a full stop. '.repeat(n)}</p>`;
+  it('drops related/newsletter/share blocks and short link lists inside the article', async () => {
+    const { extractMainContent } = await import('./readability');
+    const html = `<html><body><article>${para(6)}
+      <div class="related-stories"><a href="/a">Other story one</a><a href="/b">Other story two</a></div>
+      <div class="newsletter-signup"><p>Sign up for our newsletter</p></div>
+      <ul><li><a href="/x">Tag one</a></li><li><a href="/y">Tag two</a></li></ul>
+      <span class="visually-hidden">Image source,</span>${para(4)}</article></body></html>`;
+    const out = extractMainContent(html);
+    expect(out).toContain('Real article sentence');
+    expect(out).not.toMatch(/Other story|newsletter|Tag one|Image source/);
+  });
+
+  it('keeps link-heavy blocks that carry real content like images or paragraphs', async () => {
+    const { extractMainContent } = await import('./readability');
+    const html = `<html><body><article>${para(6)}<div><a href="/i"><img src="/i.png"></a><a href="/j">caption link</a></div></article></body></html>`;
+    expect(extractMainContent(html)).toContain('i.png');
+  });
+});
+
+describe('dropRepeatedTitle', () => {
+  it('removes a leading heading equal to the article title only', async () => {
+    const { dropRepeatedTitle } = await import('./readability');
+    expect(dropRepeatedTitle('<h1> My  Post </h1><p>Body</p>', 'my post')).toBe('<p>Body</p>');
+    expect(dropRepeatedTitle('<h2>Section</h2><p>Body</p>', 'My post')).toContain('Section');
+    expect(dropRepeatedTitle('<p>x</p>', undefined)).toBe('<p>x</p>');
+  });
+});

@@ -11,7 +11,7 @@ import { contractOutline, contrastOutline, globeOutline, headsetOutline, imageOu
 import { Article, ReadingMode, Tag } from '../../core/domain/models';
 import { reconcileArticleTags } from '../../core/domain/article-tags';
 import { extractMedia, MediaItem, youtubeThumbnail } from '../../core/domain/media';
-import { absolutizeUrls, extractMainContent } from '../../core/domain/readability';
+import { absolutizeUrls, dropRepeatedTitle, extractMainContent } from '../../core/domain/readability';
 import { contentHasImage, externalLinkFrom, sanitizeArticleHtml, shouldAutoloadReading } from '../../core/domain/html-safety';
 import { Network } from '@capacitor/network';
 import { AppSettingsService } from '../../core/services/app-settings.service';
@@ -129,7 +129,7 @@ export class ArticlePage implements OnInit {
     try {
       const response = await this.http.get(a.link);
       if (response.status < 200 || response.status >= 300) throw new Error(`Source page request failed (${response.status})`);
-      this.extracted.set(absolutizeUrls(extractMainContent(response.body), a.link));
+      this.extracted.set(absolutizeUrls(dropRepeatedTitle(extractMainContent(response.body), a.title), a.link));
     } catch (error) {
       this.extractError.set(error instanceof Error ? `Could not extract the article: ${error.message}` : 'Could not extract the article.');
     } finally {

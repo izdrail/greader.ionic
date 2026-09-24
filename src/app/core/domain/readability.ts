@@ -21,8 +21,27 @@ function score(el: Element): number {
   return (text + paragraphs * 140 + sentences * 18 + commas * 5) * Math.max(0, 1 - linkDensity(el)) * boost * penalty;
 }
 
+/** Class/id words that mark page furniture living inside the article container (recirculation, promos, sharing). */
+const JUNK_HINT = /(^|[-_\s])(related|recirc|more-from|more-stories|read-more|read-next|up-next|newsletter|promo|sponsor(ed)?|advert(isement)?|native-ad|ad-slot|ad-container|share|sharing|social|comments?|subscribe|signup|paywall|outbrain|taboola|popular|trending|breadcrumbs?|visually-hidden|sr-only|screen-reader-text)([-_\s]|$)/i;
+
+/** Remove furniture that sits inside the chosen container: hinted blocks and short link lists. */
+function pruneJunk(root: Element) {
+  root.querySelectorAll('*').forEach(node => {
+    if (!node.isConnected || node === root) return;
+    const hint = `${node.id} ${typeof node.className === 'string' ? node.className : ''}`;
+    if (JUNK_HINT.test(hint) && !node.querySelector('p p')) { node.remove(); return; }
+  });
+  root.querySelectorAll('div, section, ul, ol, nav, aside').forEach(node => {
+    if (!node.isConnected) return;
+    const text = node.textContent?.trim().length ?? 0;
+    const links = node.querySelectorAll('a').length;
+    if (links >= 2 && text < 500 && linkDensity(node) > 0.6 && !node.querySelector('p, img, figure, blockquote, pre')) node.remove();
+  });
+}
+
 function cleanCandidate(el: Element): string {
   el.querySelectorAll(STRIP).forEach(node => node.remove());
+  pruneJunk(el);
   el.querySelectorAll('*').forEach(node => {
     for (const attr of [...node.attributes]) if (/^on/i.test(attr.name) || attr.name === 'style') node.removeAttribute(attr.name);
   });
@@ -67,5 +86,17 @@ export function absolutizeUrls(html: string, baseUrl: string): string {
     img.setAttribute('decoding', 'async');
   });
   doc.querySelectorAll('a').forEach(a => { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); });
+  return doc.body.innerHTML;
+}
+
+/** The reading view prints the article title itself; drop an extracted h1/h2 near the top that repeats it. */
+export function dropRepeatedTitle(html: string, title: string | undefined): string {
+  const norm = (v: string) => v.replace(/\s+/g, ' ').trim().toLowerCase();
+  const wanted = norm(title ?? '');
+  if (!wanted) return html;
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const heading = [...doc.body.querySelectorAll('h1, h2')].slice(0, 2).find((h) => norm(h.textContent ?? '') === wanted);
+  if (!heading) return html;
+  heading.remove();
   return doc.body.innerHTML;
 }
