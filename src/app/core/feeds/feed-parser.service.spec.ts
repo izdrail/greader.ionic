@@ -29,4 +29,23 @@ describe('FeedParserService', () => {
     expect(() => parser.parse('<html><body>Not a feed</body></html>')).toThrow('web page, not an RSS or Atom feed');
     expect(() => parser.parse('<rss><channel>')).toThrow('invalid XML');
   });
+
+  it('finds item images in media:group, multiple media:thumbnails and image enclosures', () => {
+    const rss = (item: string) => parser.parse(`<rss xmlns:media="http://search.yahoo.com/mrss/"><channel><title>N</title><item><guid>g</guid><title>T</title>${item}</item></channel></rss>`).items[0].image;
+    expect(rss('<media:thumbnail url="https://x/t1.jpg"/><media:thumbnail url="https://x/t2.jpg"/>')).toBe('https://x/t1.jpg');
+    expect(rss('<media:group><media:content url="https://x/g.jpg" type="image/jpeg"/></media:group>')).toBe('https://x/g.jpg');
+    expect(rss('<enclosure url="https://x/e.png" type="image/png" length="1"/>')).toBe('https://x/e.png');
+  });
+
+  it('skips tracking pixels and emoji when taking the first body image', () => {
+    const feed = parser.parse(`<rss><channel><title>N</title><item><guid>g</guid><title>T</title><description><![CDATA[<img src="https://feeds.feedburner.com/~r/x/~4/abc" height="1" width="1"><img src="https://s.w.org/images/core/emoji/15/72x72/1f600.png"><img src="https://x/real.jpg">]]></description></item></channel></rss>`);
+    expect(feed.items[0].image).toBe('https://x/real.jpg');
+  });
+
+  it('caps future publish dates at now', () => {
+    const before = Date.now();
+    const feed = parser.parse(`<rss><channel><title>N</title><item><guid>g</guid><title>T</title><pubDate>Fri, 01 Jan 2100 00:00:00 GMT</pubDate></item></channel></rss>`);
+    expect(feed.items[0].publishedAt).toBeGreaterThanOrEqual(before);
+    expect(feed.items[0].publishedAt).toBeLessThanOrEqual(Date.now());
+  });
 });

@@ -93,12 +93,33 @@ export class FeedParserService {
   }
 
   private image(value: any): string | undefined {
-    return this.text(value.image?.url ?? value.logo ?? value.icon ?? value.thumbnail?.['@_url']) ||
-      this.array<any>(value.content).find(item => String(item?.['@_medium'] ?? '').toLowerCase() === 'image')?.['@_url'];
+    const first = (v: any) => this.array<any>(v)[0];
+    const media = [
+      ...this.array<any>(value.content),
+      ...this.array<any>(value.group).flatMap((g: any) => this.array<any>(g?.content)),
+    ];
+    const isImage = (item: any) =>
+      String(item?.['@_medium'] ?? '').toLowerCase() === 'image' || String(item?.['@_type'] ?? '').toLowerCase().startsWith('image/');
+    return this.text(value.image?.url ?? (typeof value.image === 'string' ? value.image : undefined) ?? value.logo ?? value.icon ?? first(value.thumbnail)?.['@_url'] ?? first(value.group)?.thumbnail?.['@_url']) ||
+      media.find(item => item && typeof item === 'object' && item['@_url'] && isImage(item))?.['@_url'] ||
+      this.array<any>(value.enclosure).find(item => String(item?.['@_type'] ?? '').toLowerCase().startsWith('image/'))?.['@_url'] ||
+      undefined;
   }
 
-  private htmlImage(html: string) { return html.match(/<img[^>]+src=["']([^"']+)/i)?.[1]; }
-  private date(value: any) { const parsed = Date.parse(this.text(value)); return Number.isNaN(parsed) ? Date.now() : parsed; }
+  /** First real image in the item HTML - skipping 1x1 tracking pixels and emoji sprites. */
+  private htmlImage(html: string) {
+    for (const match of html.matchAll(/<img\b[^>]*>/gi)) {
+      const tag = match[0];
+      const src = tag.match(/\bsrc=["']([^"']+)/i)?.[1];
+      if (!src) continue;
+      if (/\b(width|height)=["']?1["'\s>]/i.test(tag)) continue;
+      if (/feedburner\.com|feedsportal|stats\.wordpress\.com|pixel|\/emoji\/|s\.w\.org\/images\/core\/emoji|doubleclick|\.gif\?/i.test(src)) continue;
+      return src;
+    }
+    return undefined;
+  }
+  /** Missing/unparseable dates read as now; dates in the future (bad server clocks, scheduled posts) are capped at now so they don't pin to the top. */
+  private date(value: any) { const parsed = Date.parse(this.text(value).trim()); const now = Date.now(); return Number.isNaN(parsed) ? now : Math.min(parsed, now); }
   private link(value: any) {
     if (Array.isArray(value)) value = value.find(item => !item?.['@_rel'] || item['@_rel'] === 'alternate') ?? value[0];
     return typeof value === 'string' ? value : value?.['@_href'] ?? value?.['@_resource'] ?? this.text(value);
