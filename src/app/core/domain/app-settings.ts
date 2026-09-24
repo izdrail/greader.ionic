@@ -8,6 +8,8 @@ export interface AppSettings {
   autoloadReading: boolean;
   notifyAfterSync: boolean;
   vibrate: boolean;
+  /** Show the on-device "Summarise with AI" action on articles. */
+  aiSummaries: boolean;
   locale: string;
 }
 
@@ -21,6 +23,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   autoloadReading: false,
   notifyAfterSync: true,
   vibrate: false,
+  aiSummaries: true,
   locale: 'system',
 };
 
@@ -36,7 +39,7 @@ export const SYNC_INTERVAL_OPTIONS: { value: AppSettings['syncIntervalHours']; l
   { value: 24, label: 'Daily' },
 ];
 
-const TOGGLES = ['syncOnStartup', 'cacheImages', 'downloadPodcasts', 'markReadOnScroll', 'showArticleControls', 'autoloadReading', 'notifyAfterSync', 'vibrate'] as const;
+const TOGGLES = ['syncOnStartup', 'cacheImages', 'downloadPodcasts', 'markReadOnScroll', 'showArticleControls', 'autoloadReading', 'notifyAfterSync', 'vibrate', 'aiSummaries'] as const;
 
 /** Merge stored JSON over defaults, dropping unknown keys and wrong types. */
 export function sanitizeSettings(raw: string | null | undefined): AppSettings {

@@ -39,6 +39,12 @@ function pruneJunk(root: Element) {
   });
 }
 
+/** Remove page furniture (scripts, navigation, ads, share/related blocks, short link lists) from a parsed fragment in place. */
+export function stripPageNoise(root: Element) {
+  root.querySelectorAll(STRIP).forEach(node => node.remove());
+  pruneJunk(root);
+}
+
 function cleanCandidate(el: Element): string {
   el.querySelectorAll(STRIP).forEach(node => node.remove());
   pruneJunk(el);

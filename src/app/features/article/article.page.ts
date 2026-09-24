@@ -20,6 +20,7 @@ import { FeedHttpService } from '../../core/services/feed-http.service';
 import { ListPreferencesService } from '../../core/services/list-preferences.service';
 import { TtsService } from '../../core/services/tts.service';
 import { PodcastPlayerService } from '../../core/services/podcast-player.service';
+import { ArticleSummaryComponent } from './article-summary.component';
 
 @Component({
   selector: 'app-article',
@@ -32,9 +33,9 @@ import { PodcastPlayerService } from '../../core/services/podcast-player.service
       <div class="gif" *ngIf="m.type==='gif'" (click)="gifOverlay.set(m.url)"><img [src]="m.url" alt="GIF"><span class="badge">GIF</span></div>
       <div class="vid" *ngIf="m.type==='video'"><video #vidEl [src]="m.url" controls></video><ion-button *ngIf="pipSupported" size="small" fill="outline" (click)="togglePip(vidEl)"><ion-icon name="contract-outline" slot="start"></ion-icon>Picture in picture</ion-button></div>
     </div>
-    <div class="tag-chips" *ngIf="tagLabels().length"><ion-chip *ngFor="let label of tagLabels()" outline>{{label}}</ion-chip></div><div class="body" #bodyEl [innerHTML]="body()" (click)="onBodyClick($event)"></div><div class="extract-error" *ngIf="extractError()"><p>{{extractError()}}</p><ion-button size="small" fill="outline" (click)="retryExtract()">Try again</ion-button><ion-button size="small" fill="clear" (click)="setMode('feed')">Show feed content</ion-button></div><ion-button *ngIf="item.audio" (click)="playAudio()"><ion-icon name="headset-outline" slot="start"></ion-icon>Play podcast episode</ion-button><video *ngIf="item.video" [src]="item.video" controls></video><ion-button *ngIf="mode()==='original'&&item.link" (click)="openWeb()"><ion-icon name="globe-outline" slot="start"></ion-icon>Open original page</ion-button></article><div class="gif-overlay" *ngIf="gifOverlay()" (click)="gifOverlay.set(undefined)"><img [src]="gifOverlay()" alt="GIF fullscreen"></div></ion-content>`,
+    <div class="tag-chips" *ngIf="tagLabels().length"><ion-chip *ngFor="let label of tagLabels()" outline>{{label}}</ion-chip></div><app-article-summary [articleId]="item.id" [title]="item.title" [html]="summaryHtml()" [enabled]="appSettings.settings().aiSummaries"></app-article-summary><div class="body" #bodyEl [innerHTML]="body()" (click)="onBodyClick($event)"></div><div class="extract-error" *ngIf="extractError()"><p>{{extractError()}}</p><ion-button size="small" fill="outline" (click)="retryExtract()">Try again</ion-button><ion-button size="small" fill="clear" (click)="setMode('feed')">Show feed content</ion-button></div><ion-button *ngIf="item.audio" (click)="playAudio()"><ion-icon name="headset-outline" slot="start"></ion-icon>Play podcast episode</ion-button><video *ngIf="item.video" [src]="item.video" controls></video><ion-button *ngIf="mode()==='original'&&item.link" (click)="openWeb()"><ion-icon name="globe-outline" slot="start"></ion-icon>Open original page</ion-button></article><div class="gif-overlay" *ngIf="gifOverlay()" (click)="gifOverlay.set(undefined)"><img [src]="gifOverlay()" alt="GIF fullscreen"></div></ion-content>`,
   styles: [`article{max-width:760px;margin:auto;line-height:1.65}.media{margin:0 0 1rem}.yt{position:relative;aspect-ratio:16/9;background:#000}.yt img{width:100%;height:100%;object-fit:cover;cursor:pointer}.yt iframe{width:100%;height:100%;border:0;position:absolute;inset:0}.yt-play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;border:0;background:rgba(0,0,0,.7);color:#fff;font-size:1.5rem;cursor:pointer}.gif{position:relative;cursor:zoom-in}.gif img{max-width:100%}.gif .badge{position:absolute;top:.5rem;left:.5rem;background:rgba(0,0,0,.7);color:#fff;padding:.15rem .5rem;border-radius:4px;font-weight:700;font-size:.8rem}.gif-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:zoom-out}.gif-overlay img{max-width:100vw;max-height:100vh}.vid video{width:100%}article img,video{max-width:100%;height:auto}article.fit-images img{max-width:100%!important;height:auto!important}.byline{color:var(--ion-color-medium)}audio{width:100%}.invert article{filter:invert(0.92) hue-rotate(180deg)}.loading{text-align:center;padding:3rem;color:var(--ion-color-medium)}.extract-error{color:var(--ion-color-warning-shade)}.extract-error p{margin-bottom:.25rem}ion-button.active{--color:var(--ion-color-warning)}.tag-chips{margin:0 0 .5rem}`],
-  imports: [CommonModule, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonButton, IonIcon, IonSegment, IonSegmentButton, IonContent, IonSpinner, IonChip],
+  imports: [CommonModule, ArticleSummaryComponent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonButton, IonIcon, IonSegment, IonSegmentButton, IonContent, IonSpinner, IonChip],
 })
 export class ArticlePage implements OnInit {
   /** Image errors don't bubble, so catch them on the way down and collapse dead images instead of showing a broken-image box. */
@@ -72,6 +73,8 @@ export class ArticlePage implements OnInit {
     const safe = raw ? sanitizeArticleHtml(raw, a?.link) : '';
     return this.sanitizer.bypassSecurityTrustHtml(safe || '<p>No article content was included in this feed. Switch to Reading to load the full article.</p>');
   });
+  /** Text source for the AI summary: the Reading-mode extraction when it has been loaded (usually the full article), else the feed content. */
+  summaryHtml = computed(() => this.extracted() || this.article()?.content || '');
   /** The feed's header image is usually repeated as the first image in the body; show it once. */
   heroInBody = computed(() => {
     const a = this.article();
